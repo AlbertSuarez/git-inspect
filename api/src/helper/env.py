@@ -17,3 +17,7 @@ def get_github_client_secret():
 
 def get_spotify_client_id():
     return _get('SPOTIFY_CLIENT_ID')
+
+
+def get_spotify_client_secret():
+    return _get('SPOTIFY_CLIENT_SECRET')

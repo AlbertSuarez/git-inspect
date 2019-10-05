@@ -6,6 +6,8 @@ info:
   title: Git Inspect API
 
 servers:
+  - url: http://134.209.244.212:8084
+    description: Production endpoint.
   - url: http://localhost:8084
     description: Development endpoint.
 

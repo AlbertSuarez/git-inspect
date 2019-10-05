@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IDashboardProps } from "./IDashboardProps";
 
-export default class GitInspect extends React.Component<IDashboardProps, {}> {
+export default class Dashboard extends React.Component<any, {}> {
 
 }

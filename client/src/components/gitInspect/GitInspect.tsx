@@ -1,30 +1,42 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Provider, ProviderProps } from 'react-redux';
-import { IGitInspectProps } from './IGitInspectProps';
 import { createStore } from '../../store';
+import { SetInitialState } from '../../actions/setInitialState';
+import { IGitInspectState } from '../../state';
+import Dashboard from '../dashboard/Dashboard';
+import HomePage from '../homePage/HomePage';
 
-export default class GitInspect extends React.Component<IGitInspectProps, {}> {
+class GitInspect extends React.Component<any, {}> {
 
-    //private store = null;
-
-    constructor(props:IGitInspectProps){
+    constructor(props:any){
         super(props);
-
-        //this.store = createStore();
+        this.props.setInitialState();
     }
 
-    public render(): React.ReactElement<IGitInspectProps>{
+    public render(): React.ReactElement<any>{
         return(
-            <div>Hello World!</div>
-            // <Provider store={this.store}>
-            //     <DetalleFormacion 
-            //         webUrl={this.props.webUrl}
-            //         isDebug={this.props.isDebug}
-            //         endpoint={this.props.endpoint}
-            //         httpClient={this.props.httpClient}
-            //         adminGroup={this.props.adminGroup}/>
-            // </Provider>
+            <div>
+                {this.props.page=="HOME" ? <HomePage/> : <Dashboard/>}
+            </div>
         );
     }
-
 }
+
+interface IDispatch{
+    setInitialState:() => void;
+}
+
+const mapDispatchToProps = (dispatch:any):IDispatch => {
+    return{
+        setInitialState:() => {
+            return dispatch(SetInitialState());
+        }
+    };
+};
+
+const mapStateToProps = (state: IGitInspectState) => ({
+    page: state.page
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(GitInspect);

@@ -1,11 +1,9 @@
 .centered{
     position:absolute;
-    left:40%;
-    top:30%;
+    left:35%;
+    top:20%;
     margin:0 auto;
     width: 30%;
-    margin-left:-50px;
-    margin-top:-50px;
     height: 400px;
 }
 
@@ -23,4 +21,19 @@
 
 .homeImage{
     max-width: 100%;
+}
+
+@media (max-width: 700px) {
+    .centered{
+        width: 90%;
+        left: 5%;
+        top: 15%;
+        height: 70%
+    }
+
+    .homeInput{
+        margin: 5% !important;
+        margin-top: 30% !important;
+        width: 90%;
+    }
 }

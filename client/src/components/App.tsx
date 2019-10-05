@@ -23,7 +23,6 @@ export default class App extends React.Component<IAppProps, {}> {
         return (
             <div>
                 <div className="hero"> 
-                    {/* <div className="hero__title">Hello World</div> */}
                     <div className="cube"></div>
                     <div className="cube"></div>
                     <div className="cube"></div>
@@ -35,11 +34,6 @@ export default class App extends React.Component<IAppProps, {}> {
                     <GitInspect/>
                 </Provider>
             </div>
-        );
-        return(
-            <Provider store={this.store}>
-                <GitInspect/>
-            </Provider>
         );
     }
 }

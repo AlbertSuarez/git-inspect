@@ -62,24 +62,6 @@ class HomePage extends React.Component<any, any> {
           </Button>
         </ThemeProvider>
       </Card>
-      // <div className="centered">
-      //   <TextField
-      //     error={this.state.error}
-      //     id="outlined-dense"
-      //     label="Github Username"
-      //     className="homeInput"
-      //     onChange={this.changeUsername}
-      //     margin="dense"
-      //     variant="outlined"
-      //   />
-      //   <Button 
-      //     variant="contained" 
-      //     color="primary"
-      //     onClick={this.submit}
-      //     className="homeButton">
-      //     Submit
-      //   </Button>
-      // </div>
     );
   }
 

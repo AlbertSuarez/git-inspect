@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
+.profileImg {
+    border-radius: 50%;
+    height: 100%;
+    border: 7px solid #D0A310;
+}
+
+.headerSection{
+    height: 30%;
+    margin: 3%;
+    display: flex;
+    justify-content: center;
+}
+
+.profileName{
+    margin: auto;
+    margin-left: 30px;
+}
+
+.sectionContent{
+    display: flex;
+    justify-content: space-around;
+    height: 50%;
+}
+
+.subSectionTitleContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.subSectionContent{
+    display: flex;
+    justify-content: space-around;
+}
+
+.subSection{
+    width: 40%;
+}
+
+.bigNumeber{
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 5rem;
+}
+
+.bigNumeberText{
+    display: flex;
+    justify-content: center;
+}

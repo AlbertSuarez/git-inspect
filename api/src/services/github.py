@@ -79,3 +79,20 @@ def get_topics(username, repository):
             else:
                 log.error(f'Error in {get_topics.__name__} function. [{e}]')
     return None
+
+
+def get_contributors(username, repository):
+    for attempt in range(0, GITHUB_API_RETRIES):
+        try:
+            endpoint = GITHUB_CONTRIBUTORS_ENDPOINT.format(username=username, repository=repository)
+            params = dict(client_id=env.get_github_client_id(), client_secret=env.get_github_client_secret())
+            response = requests.get(endpoint, params=params, timeout=GITHUB_API_TIMEOUT)
+            if response.ok:
+                response = response.json()
+                return response
+        except Exception as e:
+            if attempt < GITHUB_API_RETRIES - 1:
+                log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+            else:
+                log.error(f'Error in {get_contributors.__name__} function. [{e}]')
+    return None

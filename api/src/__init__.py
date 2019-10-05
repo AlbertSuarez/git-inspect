@@ -5,6 +5,7 @@ GITHUB_SINGLE_USER_ENDPOINT = 'https://api.github.com/users/{username}'
 GITHUB_USER_REPOS_ENDPOINT = 'https://api.github.com/users/{username}/repos'
 GITHUB_LANGUAGES_ENDPOINT = 'https://api.github.com/repos/{username}/{repository}/languages'
 GITHUB_TOPICS_ENDPOINT = 'https://api.github.com/repos/{username}/{repository}/topics'
+GITHUB_CONTRIBUTORS_ENDPOINT = 'https://api.github.com/repos/{username}/{repository}/contributors'
 
 GITHUB_OTHERS_LABEL = 'Others'
 GITHUB_LANGUAGES_MAX = 7
@@ -26,6 +27,7 @@ __all__ = [
     'GITHUB_OTHERS_LABEL',
     'GITHUB_LANGUAGES_MAX',
     'GITHUB_TOPICS_MAX',
+    'GITHUB_CONTRIBUTORS_ENDPOINT',
     'MESSAGE_ERROR',
     'MESSAGE_USER_NOT_FOUND',
     'MESSAGE_REPOS_NOT_FOUND'

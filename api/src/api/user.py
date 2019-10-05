@@ -85,6 +85,36 @@ def get(github_user):
                 resp['topics']['Others'] = dict(amount=language_amount, percentage=percentage)
                 break
 
+        # Contributors
+        resp['commits'] = 0
+        resp['commits_user'] = 0
+        resp['commits_contributor'] = 0
+        resp['contributors'] = {}
+        for repo in repos_list:
+            repo_name = response.get('name', repo)
+            if repo_name:
+                contributor_response = github.get_contributors(github_user, repo_name)
+                for contributor in contributor_response:
+                    contributor_name = response.get('login', contributor)
+                    if contributor_name:
+                        contributions = response.get('contributions', contributor, default=0)
+                        resp['commits'] += contributions
+                        if contributor_name == github_user:
+                            resp['commits_user'] += contributions
+                        else:
+                            if contributor_name not in resp['contributors']:
+                                resp['contributors'][contributor_name] = dict(
+                                    commits=0,
+                                    photo=response.get('avatar_url', contributor, default=''),
+                                    url=response.get('html_url', contributor, default='')
+                                )
+                            resp['commits_contributor'] += contributions
+                            resp['contributors'][contributor_name]['commits'] += contributions
+        resp['commits_user_percentage'] = formatter.to_float((resp['commits_user'] / resp['commits']) * 100)
+        resp['commits_contributor_percentage'] = formatter.to_float(
+            (resp['commits_contributor'] / resp['commits']) * 100
+        )
+
         return response.make(error=False, response=resp)
 
     except Exception as e:

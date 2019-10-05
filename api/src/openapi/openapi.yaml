@@ -1,0 +1,60 @@
+openapi: '3.0.0'
+
+info:
+  description: GitHub user information extractor built in MamutHack'19
+  version: '1.0'
+  title: Git Inspect API
+
+servers:
+  - url: http://localhost:8084
+    description: Development endpoint.
+
+tags:
+  - name: basic
+    description: endpoint for retrieving basic information from a GitHub user.
+
+paths:
+  /user:
+    get:
+      tags:
+        - basic
+      summary: Gets the basic information and analytics from a GitHub user.
+      description: Invoke this endpoint to retrieve the basic infomration from a GitHub user.
+      operationId: src.api.user.get
+      parameters:
+        - name: github_user
+          in: query
+          description: Specifies the user to retrieve.
+          required: true
+          example: AlbertSuarez
+          schema:
+            type: string
+      responses:
+        200:
+          description: Standard Git Inspect API JSON response. You should check the `error` attribute to determine if there was an error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponse'
+        default:
+          description: Unexpected error.
+          content:
+            application/text:
+              schema:
+                type: string
+                description: Error description.
+
+components:
+  schemas:
+    APIResponse:
+      type: object
+      properties:
+        error:
+          type: boolean
+          description: Whether or not the request was successfully processed or not.
+        message:
+          type: string
+          description: Error message if the request was unsuccessful.
+        response:
+          type: object
+          description: Contains the response data if the request was successful.

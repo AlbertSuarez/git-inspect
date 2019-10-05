@@ -1,19 +1,26 @@
 .centered{
     position:absolute;
-    left:45%;
-    top:60%;
+    left:40%;
+    top:30%;
     margin:0 auto;
-    width: 20%;
+    width: 30%;
     margin-left:-50px;
     margin-top:-50px;
+    height: 400px;
 }
 
 .homeInput{
-    width: 100%;
+    margin: 5% !important;
+    margin-top: 15% !important;
+    width: 90%;
 }
 
 .homeButton{
     width: 50%;
-    margin-top: 5%;
+    margin-top: 5% !important;
     left: 25%;
+}
+
+.homeImage{
+    max-width: 100%;
 }

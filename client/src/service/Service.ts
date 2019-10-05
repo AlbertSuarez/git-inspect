@@ -15,7 +15,7 @@ export default class Service implements IService {
                 response.json()
                 .then(data=>{
                     console.log("DATA",data);
-                    resolve(data);
+                    resolve(data.response);
                 });
             })
         });

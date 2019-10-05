@@ -1,4 +1,8 @@
-# Git Inspect
+<br>
+<p align="center">
+  <img alt="GitInspect" src="docs/images/gitInspect.png" width="50%"/>
+</p>
+<br>
 
 [![HitCount](http://hits.dwyl.io/AlbertSuarez/git-inspect.svg)](http://hits.dwyl.io/AlbertSuarez/git-inspect)
 [![GitHub stars](https://img.shields.io/github/stars/AlbertSuarez/git-inspect.svg)](https://GitHub.com/AlbertSuarez/git-inspect/stargazers/)

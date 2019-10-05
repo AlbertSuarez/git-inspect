@@ -71,7 +71,7 @@ def get_topics(username, repository):
             headers = dict(Accept='application/vnd.github.mercy-preview+json')
             response = requests.get(endpoint, params=params, headers=headers, timeout=GITHUB_API_TIMEOUT)
             if response.ok:
-                response = response.json()
+                response = response.json()['names']
                 return response
         except Exception as e:
             if attempt < GITHUB_API_RETRIES - 1:

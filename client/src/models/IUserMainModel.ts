@@ -1,4 +1,4 @@
-export interface IUserModel{
+export interface IUserMainModel{
     photo: string;
     public_repos: number;
     public_gists: number;

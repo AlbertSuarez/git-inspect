@@ -29,6 +29,18 @@ services:
       - 8084:8084
     restart: always
 
+  client:
+    image: git_inspect_client
+    container_name: git_inspect_client
+    build:
+      context: client
+      dockerfile: Dockerfile
+    networks:
+      - git_inspect
+    ports:
+      - 8085:8085
+    restart: always
+
 networks:
   git_inspect:
     name: git_inspect

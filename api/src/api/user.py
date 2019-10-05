@@ -1,3 +1,5 @@
+import operator
+
 from src import *
 from src.helper import response, formatter
 from src.services import github
@@ -33,9 +35,9 @@ def get(github_user):
     resp['repo_avg_forks'] = formatter.to_float(resp['repo_total_forks'] / resp['repo_amount'])
     resp['repo_avg_open_issues'] = formatter.to_float(resp['repo_total_open_issues'] / resp['repo_amount'])
 
-    # Languages & topics
-    resp['languages'] = {}
-    resp['topics'] = {}
+    # Languages & topics - amount
+    languages_dict = {}
+    topics_dict = {}
     for repo in repos_list:
         repo_name = response.get('name', repo)
         if repo_name:
@@ -43,13 +45,43 @@ def get(github_user):
             topic_response = github.get_topics(github_user, repo_name)
             if language_response:
                 for key, value in language_response.items():
-                    if key not in resp['languages']:
-                        resp['languages'][key] = dict(characters=0)
-                    resp['languages'][key]['characters'] += value
+                    if key not in languages_dict:
+                        languages_dict[key] = 0
+                    languages_dict[key] += value
             if topic_response:
                 for topic in topic_response:
-                    if topic not in resp['topics']:
-                        resp['topics'][topic] = dict(amount=0)
-                    resp['topics'][topic]['amount'] += 1
+                    if topic not in topics_dict:
+                        topics_dict[topic] = 0
+                    topics_dict[topic] += 1
+
+    # Languages - percentage
+    resp['languages'] = {}
+    total_languages = sum(languages_dict.values())
+    sorted_languages = sorted(languages_dict.items(), key=operator.itemgetter(1), reverse=True)
+    for idx in range(0, len(sorted_languages)):
+        if idx < GITHUB_LANGUAGES_MAX:
+            language_name, language_amount = sorted_languages[idx]
+            percentage = formatter.to_float((language_amount / total_languages) * 100)
+            resp['languages'][language_name] = dict(amount=language_amount, percentage=percentage)
+        else:
+            language_amount = sum([v[1] for v in sorted_languages[GITHUB_LANGUAGES_MAX:]])
+            percentage = formatter.to_float((language_amount / total_languages) * 100)
+            resp['languages']['Others'] = dict(amount=language_amount, percentage=percentage)
+            break
+
+    # Topics - percentage
+    resp['topics'] = {}
+    total_topics = sum(topics_dict.values())
+    sorted_topics = sorted(topics_dict.items(), key=operator.itemgetter(1), reverse=True)
+    for idx in range(0, len(sorted_topics)):
+        if idx < GITHUB_TOPICS_MAX:
+            language_name, language_amount = sorted_topics[idx]
+            percentage = formatter.to_float((language_amount / total_topics) * 100)
+            resp['topics'][language_name] = dict(amount=language_amount, percentage=percentage)
+        else:
+            language_amount = sum([v[1] for v in sorted_topics[GITHUB_TOPICS_MAX:]])
+            percentage = formatter.to_float((language_amount / total_topics) * 100)
+            resp['topics']['Others'] = dict(amount=language_amount, percentage=percentage)
+            break
 
     return response.make(error=False, response=resp)

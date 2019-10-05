@@ -1,8 +1,7 @@
 import * as React from 'react';
-//import { Provider, ProviderProps } from 'react-redux';
+import { Provider, ProviderProps } from 'react-redux';
 import { IGitInspectProps } from './IGitInspectProps';
-//import DetalleFormacion from '../detalleFormacion/DetalleFormacion';
-//import { createStore } from '../../store';
+import { createStore } from '../../store';
 
 export default class GitInspect extends React.Component<IGitInspectProps, {}> {
 

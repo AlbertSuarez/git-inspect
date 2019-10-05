@@ -1,4 +1,16 @@
 .dashboardContent{
     position: absolute;
-    top: 0;
+    left:15%;
+    top:15%;
+    margin:0 auto;
+    height: 70%;
+    width: 100%;
+}
+
+.dashboardSection {
+    width: 70%;
+    flex: 0 0 auto;
+    height: 96%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }

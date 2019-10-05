@@ -14,6 +14,8 @@ servers:
 tags:
   - name: basic
     description: endpoint for retrieving basic information from a GitHub user.
+  - name: spotify
+    description: endpoint for retrieving the information from Spotify.
 
 paths:
   /user:
@@ -23,6 +25,58 @@ paths:
       summary: Gets the basic information and analytics from a GitHub user.
       description: Invoke this endpoint to retrieve the basic infomration from a GitHub user.
       operationId: src.api.user.get
+      parameters:
+        - name: github_user
+          in: query
+          description: Specifies the user to retrieve.
+          required: true
+          example: AlbertSuarez
+          schema:
+            type: string
+      responses:
+        200:
+          description: Standard Git Inspect API JSON response. You should check the `error` attribute to determine if there was an error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponse'
+        default:
+          description: Unexpected error.
+          content:
+            application/text:
+              schema:
+                type: string
+                description: Error description.
+
+  /spotify/login:
+    get:
+      tags:
+        - spotify
+      summary: Gets the URL in order to log in into Spotify.
+      description: Invoke this endpoint to retrieve the URL for logging to Spotify.
+      operationId: src.api.spotify.login
+      responses:
+        200:
+          description: Standard Git Inspect API JSON response. You should check the `error` attribute to determine if there was an error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponse'
+        default:
+          description: Unexpected error.
+          content:
+            application/text:
+              schema:
+                type: string
+                description: Error description.
+
+  /spotify/playlist:
+    get:
+      tags:
+        - spotify
+      summary: Gets an Spotify playlist given a GitHub username.
+      description: Invoke this endpoint to an Spotify playlist based on a GitHub username.
+      operationId: src.api.spotify.playlist
       parameters:
         - name: github_user
           in: query

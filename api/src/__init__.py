@@ -15,6 +15,11 @@ GITHUB_PUSH_EVENT_TYPE = 'PushEvent'
 
 NLP_MOST_COMMON_K = 25
 
+SPOTIFY_RESPONSE_TYPE = 'code'
+SPOTIFY_REDIRECT_URI = 'https://127.0.0.1:8085/'
+SPOTIFY_SCOPES = 'playlist-modify-private playlist-modify-public'
+SPOTIFY_API_LOGIN_URL = 'https://accounts.spotify.com/authorize'
+
 MESSAGE_ERROR = 'Unexpected error.'
 MESSAGE_USER_NOT_FOUND = 'User not found.'
 MESSAGE_REPOS_NOT_FOUND = 'You should have at least one public repository.'
@@ -35,6 +40,10 @@ __all__ = [
     'GITHUB_CONTRIBUTORS_ENDPOINT',
     'GITHUB_USER_EVENTS_ENDPOINT',
     'NLP_MOST_COMMON_K',
+    'SPOTIFY_RESPONSE_TYPE',
+    'SPOTIFY_REDIRECT_URI',
+    'SPOTIFY_SCOPES',
+    'SPOTIFY_API_LOGIN_URL',
     'MESSAGE_ERROR',
     'MESSAGE_USER_NOT_FOUND',
     'MESSAGE_REPOS_NOT_FOUND'

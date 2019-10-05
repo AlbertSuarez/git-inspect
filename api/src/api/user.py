@@ -33,4 +33,16 @@ def get(github_user):
     resp['repo_avg_forks'] = formatter.to_float(resp['repo_total_forks'] / resp['repo_amount'])
     resp['repo_avg_open_issues'] = formatter.to_float(resp['repo_total_open_issues'] / resp['repo_amount'])
 
+    # Languages
+    resp['languages'] = {}
+    for repo in repos_list:
+        repo_name = response.get('name', repo)
+        if repo_name:
+            language_response = github.get_languages(github_user, repo_name)
+            if language_response:
+                for key, value in language_response.items():
+                    if key not in resp['languages']:
+                        resp['languages'][key] = dict(characters=0)
+                    resp['languages'][key]['characters'] += value
+
     return response.make(error=False, response=resp)

@@ -14,6 +14,6 @@
 
 .homeButton{
     width: 50%;
-    margin-top: 5%;
+    margin-top: 5% !important;
     left: 25%;
 }

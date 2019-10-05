@@ -6,30 +6,47 @@ import { SubmitLogin } from '../../actions/submitLogin';
 import { IGitInspectState } from '../../state';
 import '../../style/home.css';
 
-class HomePage extends React.Component<any, {}> {
+class HomePage extends React.Component<any, any> {
   
   constructor(props:any){
     super(props);
+
+    this.state={
+      username: "",
+      error: false
+    }
   }
 
   public render(): React.ReactElement<any>{
     return(
       <div className="centered">
         <TextField
+          error={this.state.error}
           id="outlined-dense"
           label="Github Username"
           className="homeInput"
+          onChange={this.changeUsername}
           margin="dense"
           variant="outlined"
         />
         <Button 
           variant="contained" 
           color="primary"
+          onClick={this.submit}
           className="homeButton">
           Submit
         </Button>
       </div>
     );
+  }
+
+  public changeUsername = (event: any) => {
+    this.setState({username: event.target.value, error: false});
+  };
+
+  private submit = () => {
+    if(this.state.username=="") this.setState({error: true});
+    else this.props.submitLogin(this.state.username);
   }
 }
 

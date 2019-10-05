@@ -26,6 +26,7 @@ This file must have this structure (without the brackets):
     ```bash
     GITHUB_CLIENT_ID={GITHUB_CLIENT_ID}
     GITHUB_CLIENT_SECRET={GITHUB_CLIENT_SECRET}
+    SPOTIFY_CLIENT_ID={SPOTIFY_CLIENT_ID}
     ```
 
 4. Run API server as a python module

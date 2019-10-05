@@ -7,6 +7,9 @@ import '../../../style/section.css';
 class YourRepositories extends React.Component<any, {}> {
     
     public render(): React.ReactElement<any>{
+
+        console.log("THIS PROD",this.props);
+
         return(
             <Card className="sectionCard">
 
@@ -26,7 +29,7 @@ const mapDispatchToProps = (dispatch:any):IDispatch => {
 };
 
 const mapStateToProps = (state: IGitInspectState) => ({
-
+    
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(YourRepositories);

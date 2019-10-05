@@ -14,8 +14,11 @@ class Dashboard extends React.Component<any, {}> {
     }
     
     public render(): React.ReactElement<any>{
+
+        console.log("DATA DASHBOARD", this.props);
+
         return(
-            <Element name="dashboardScroll" id="dashboardContainer" className="dashboardContent">
+            <div id="dashboardContainer" className="dashboardContent">
                 <div id="generalInfoSection"  className="dashboardSection">
                     <GeneralInfo/>
                     <Link
@@ -32,7 +35,7 @@ class Dashboard extends React.Component<any, {}> {
                 <div id="yourRepositoriesSection" className="dashboardSection">
                     <YourRepositories/>
                 </div>
-            </Element>
+            </div>
         );
     }
 

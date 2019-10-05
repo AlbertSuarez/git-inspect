@@ -16,4 +16,4 @@ def get(github_user):
     response_dict['followers'] = response.get_attribute('followers', basic_information)
     response_dict['following'] = response.get_attribute('following', basic_information)
 
-    return response.make(error=False, response=response_dict), 200
+    return response.make(error=False, response=response_dict)

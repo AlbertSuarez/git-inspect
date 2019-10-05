@@ -4,7 +4,7 @@ def make(error, message=None, response=None):
         assert type(message) is str
         response_dict['message'] = message
     else:
-        assert type(message) is dict
+        assert type(response) is dict
         response_dict['response'] = response
     return response_dict, 200
 

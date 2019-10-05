@@ -9,5 +9,5 @@ def make(error, message=None, response=None):
     return response_dict, 200
 
 
-def get_attribute(attribute_name, json_response):
-    return None if attribute_name not in json_response else json_response[attribute_name]
+def get(attribute_name, json_response, default=None):
+    return default if attribute_name not in json_response else json_response[attribute_name]

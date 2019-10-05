@@ -49,3 +49,17 @@
     display: flex;
     justify-content: center;
 }
+
+.footerContent{
+    display: flex;
+    justify-content: space-around;
+    margin-top: -2%;
+}
+
+.space{
+    width: 45%;
+}
+
+.nextSectionButton{
+    width: 45%;
+}

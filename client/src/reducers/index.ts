@@ -22,8 +22,7 @@ export default (state: IGitInspectState = initialState, action: Action) =>{
         case ActionTypes.NEXT_PAGE:
             return{
                 ...state,
-                scroll: true,
-                scrollDirection: "LEFT"
+                section: action.section
             }
 
         default:

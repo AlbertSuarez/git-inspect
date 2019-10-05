@@ -11,4 +11,4 @@ export type Action =
     {type: ActionTypes.SET_INITIAL_STATE} |
     {type: ActionTypes.SUBMIT_USERNAME_REQUEST, isBusy: boolean } |
     {type: ActionTypes.SUBMIT_USERNAME_SUCCESS, isBusy: boolean, page: string, user_main_data: IUserMainModel } |
-    {type: ActionTypes.NEXT_PAGE}
+    {type: ActionTypes.NEXT_PAGE, section: string}

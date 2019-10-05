@@ -14,3 +14,7 @@ def login():
     url_args = '&'.join(['{}={}'.format(key, quote(val)) for key, val in auth_query_parameters.items()])
     auth_url = '{}/?{}'.format(SPOTIFY_API_LOGIN_URL, url_args)
     return response.make(error=False, response=dict(redirect=auth_url))
+
+
+def playlist(code, github_user):
+    pass

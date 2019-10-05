@@ -70,6 +70,36 @@ paths:
                 type: string
                 description: Error description.
 
+  /spotify/playlist:
+    get:
+      tags:
+        - spotify
+      summary: Gets an Spotify playlist given a GitHub username.
+      description: Invoke this endpoint to an Spotify playlist based on a GitHub username.
+      operationId: src.api.spotify.playlist
+      parameters:
+        - name: github_user
+          in: query
+          description: Specifies the user to retrieve.
+          required: true
+          example: AlbertSuarez
+          schema:
+            type: string
+      responses:
+        200:
+          description: Standard Git Inspect API JSON response. You should check the `error` attribute to determine if there was an error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponse'
+        default:
+          description: Unexpected error.
+          content:
+            application/text:
+              schema:
+                type: string
+                description: Error description.
+
 components:
   schemas:
     APIResponse:

@@ -16,17 +16,45 @@
 }
 
 .generalInfoShow{
+    z-index: 3;
+    position: absolute;
+    width: 70%;
+    flex: 0 0 auto;
+    height: 96%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    opacity: 1;
+    transform: translate(0,0em);
+    transition: all 250ms linear;
+}
+
+.generalInfoHidden{
+    position: absolute;
     width: 70%;
     flex: 0 0 auto;
     height: 96%;
     margin-top: 2%;
     margin-bottom: 2%;
     opacity: 0;
+    transform: translate(0,3em);
+    transition: all 250ms linear;
+}
+
+.yourRepositoriesShow{
+    width: 70%;
+    z-index: 3;
+    position: absolute;
+    flex: 0 0 auto;
+    height: 96%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    opacity: 1;
     transform: translate(0,0em);
     transition: all 250ms linear;
 }
 
-.generalInfoHidden{
+.yourRepositoriesHidden{
+    position: absolute;
     width: 70%;
     flex: 0 0 auto;
     height: 96%;

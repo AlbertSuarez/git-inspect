@@ -51,13 +51,16 @@ class GeneralInfo extends React.Component<any, {}> {
                         </div>
                     </div>
                 </div>
-                 {/* <Button 
-                    variant="contained" 
-                    color="primary"
-                    onClick={this.nextPage}
-                    className="homeButton">
-                    Next Section
-                </Button> */}
+                <div className="footerContent">
+                    <div className="space"></div>
+                    <Button 
+                        variant="contained" 
+                        color="primary"
+                        onClick={this.nextPage}
+                        className="nextSectionButton">
+                        Next Section
+                    </Button>
+                </div>
             </Card>
         );
     }

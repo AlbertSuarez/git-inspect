@@ -23,30 +23,30 @@ class Dashboard extends React.Component<any, any> {
         console.log("DATA DASHBOARD", this.props);
 
         return(
-            <div id="dashboardContainer" className={this.state.generalInfoClass}>
-                <div className="dashboardSection">
+            <div id="dashboardContainer" className="dashboardContent">
+                <div className={this.state.generalInfoClass}>
                     <GeneralInfo/>
                 </div>
-                <div className="dashboardSection">
+                <div className={this.state.yourRepositoriesClass}>
                     <YourRepositories/>
                 </div>
             </div>
         );
     }
 
-    public componentDidUpdate(prevProps: any) {
-        console.log("NEW PROPS",this.props);
-        //$("#generalInfoSection")[0].fadeOut()
-        // $("#generalInfoSection")[0].animate([
-        //     // keyframes
-        //     { transform: 'translateX(+70%)' }, 
-        //     { transform: 'translateY(0px)' }
-        //   ], { 
-        //     // timing options
-        //     duration: 500,
-        //     iterations: 1
-        //   });
-        //console.log("NEW PROPS",$("#generalInfoSection")[0]);
+    public componentWillReceiveProps(nextProps: any) {
+        if(nextProps.section=="GENERAL INFO") {
+            this.setState({
+                generalInfoClass: "generalInfoShow",
+                yourRepositoriesClass: "yourRepositoriesHidden"
+            });
+        }
+        else if (nextProps.section=="YOUR REPOSITORIES"){
+            this.setState({
+                generalInfoClass: "generalInfoHidden",
+                yourRepositoriesClass: "yourRepositoriesShow"
+            });
+        }
     }
 }
 
@@ -61,8 +61,7 @@ const mapDispatchToProps = (dispatch:any):IDispatch => {
 };
 
 const mapStateToProps = (state: IGitInspectState) => ({
-    scroll: state.scroll,
-    scrollDirection: state.scrollDirection
+    section: state.section
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);

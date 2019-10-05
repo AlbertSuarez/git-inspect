@@ -7,7 +7,11 @@ export default (state: IGitInspectState = initialState, action: Action) =>{
         case ActionTypes.SET_INITIAL_STATE:
             return {
                 ...state,
-                loginPage: true
+                page: "HOME"
             };
+        default:
+            return{
+                ...state
+            }
     }
 }

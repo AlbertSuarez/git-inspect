@@ -1,6 +1,10 @@
 export enum ActionTypes {
-    SET_INITIAL_STATE = "SET_INITIAL_STATE"
+    SET_INITIAL_STATE = "SET_INITIAL_STATE",
+    SUBMIT_USERNAME_REQUEST = "SUBMIT_USERNAME_REQUEST",
+    SUBMIT_USERNAME_SUCCESS = "SUBMIT_USERNAME_SUCCESS"
 }
 
 export type Action =
-    {type: ActionTypes.SET_INITIAL_STATE}
+    {type: ActionTypes.SET_INITIAL_STATE} |
+    {type: ActionTypes.SUBMIT_USERNAME_REQUEST } |
+    {type: ActionTypes.SUBMIT_USERNAME_SUCCESS }

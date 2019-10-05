@@ -1,7 +1,9 @@
 export interface IGitInspectState {
-    loginPage: boolean;
+    page: string;
+    isBusy: boolean;
 }
 
 export const initialState: IGitInspectState = {
-    loginPage: true
+    page: "HOME",
+    isBusy: true
 }

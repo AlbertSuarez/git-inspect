@@ -1,0 +1,19 @@
+.centered{
+    position:absolute;
+    left:45%;
+    top:60%;
+    margin:0 auto;
+    width: 20%;
+    margin-left:-50px;
+    margin-top:-50px;
+}
+
+.homeInput{
+    width: 100%;
+}
+
+.homeButton{
+    width: 50%;
+    margin-top: 5%;
+    left: 25%;
+}

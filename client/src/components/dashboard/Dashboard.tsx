@@ -7,10 +7,15 @@ import GeneralInfo from '../sections/generalInfo/GeneralInfo';
 import YourRepositories from '../sections/YourRepositories/YourRepositories';
 import { Link, Element as Element, animateScroll as scroll } from "react-scroll";
 
-class Dashboard extends React.Component<any, {}> {
+class Dashboard extends React.Component<any, any> {
 
     constructor(props:any){
         super(props);
+
+        this.state = {
+            generalInfoClass: "generalInfoShow",
+            yourRepositoriesClass: "yourRepositoriesHidden"
+        };
     }
     
     public render(): React.ReactElement<any>{
@@ -18,30 +23,20 @@ class Dashboard extends React.Component<any, {}> {
         console.log("DATA DASHBOARD", this.props);
 
         return(
-            <div id="dashboardContainer" className="dashboardContent">
-                <div id="generalInfoSection"  className="dashboardSection">
+            <div id="dashboardContainer" className={this.state.generalInfoClass}>
+                <div className="dashboardSection">
                     <GeneralInfo/>
-                    <Link
-                        activeClass="active"
-                        to="yourRepositoriesSection"
-                        spy={true}
-                        smooth={true}
-                        containerId="dashboardContainer"
-                        duration={500}
-                    >
-                        Section 3
-                    </Link>
                 </div>
-                <div id="yourRepositoriesSection" className="dashboardSection">
+                <div className="dashboardSection">
                     <YourRepositories/>
                 </div>
             </div>
         );
     }
 
-    // public componentDidUpdate(prevProps: any) {
-    //     console.log("NEW PROPS",this.props);
-        // $("#generalInfoSection")[0].css({left: ""});
+    public componentDidUpdate(prevProps: any) {
+        console.log("NEW PROPS",this.props);
+        //$("#generalInfoSection")[0].fadeOut()
         // $("#generalInfoSection")[0].animate([
         //     // keyframes
         //     { transform: 'translateX(+70%)' }, 
@@ -51,8 +46,8 @@ class Dashboard extends React.Component<any, {}> {
         //     duration: 500,
         //     iterations: 1
         //   });
-        // console.log("NEW PROPS",$("#generalInfoSection")[0]);
-    // }
+        //console.log("NEW PROPS",$("#generalInfoSection")[0]);
+    }
 }
 
 interface IDispatch{

@@ -6,10 +6,12 @@ GITHUB_USER_REPOS_ENDPOINT = 'https://api.github.com/users/{username}/repos'
 GITHUB_LANGUAGES_ENDPOINT = 'https://api.github.com/repos/{username}/{repository}/languages'
 GITHUB_TOPICS_ENDPOINT = 'https://api.github.com/repos/{username}/{repository}/topics'
 GITHUB_CONTRIBUTORS_ENDPOINT = 'https://api.github.com/repos/{username}/{repository}/contributors'
+GITHUB_USER_EVENTS_ENDPOINT = 'https://api.github.com/users/{username}/events'
 
 GITHUB_OTHERS_LABEL = 'Others'
 GITHUB_LANGUAGES_MAX = 7
 GITHUB_TOPICS_MAX = 7
+GITHUB_PUSH_EVENT_TYPE = 'PushEvent'
 
 MESSAGE_ERROR = 'Unexpected error.'
 MESSAGE_USER_NOT_FOUND = 'User not found.'
@@ -27,7 +29,9 @@ __all__ = [
     'GITHUB_OTHERS_LABEL',
     'GITHUB_LANGUAGES_MAX',
     'GITHUB_TOPICS_MAX',
+    'GITHUB_PUSH_EVENT_TYPE',
     'GITHUB_CONTRIBUTORS_ENDPOINT',
+    'GITHUB_USER_EVENTS_ENDPOINT',
     'MESSAGE_ERROR',
     'MESSAGE_USER_NOT_FOUND',
     'MESSAGE_REPOS_NOT_FOUND'

@@ -4,6 +4,7 @@ Flask-Cors==3.0.8
 uWSGI==2.0.18
 uwsgitop==0.11
 requests==2.22.0
+nltk==3.4.5
 ## The following requirements were added by pip freeze:
 certifi==2019.9.11
 chardet==3.0.4

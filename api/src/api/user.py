@@ -89,7 +89,7 @@ def get(github_user):
         resp['commits'] = 0
         resp['commits_user'] = 0
         resp['commits_contributor'] = 0
-        resp['contributors'] = {}
+        contributors_dict = {}
         for repo in repos_list:
             repo_name = response.get('name', repo)
             if repo_name:
@@ -102,18 +102,23 @@ def get(github_user):
                         if contributor_name == github_user:
                             resp['commits_user'] += contributions
                         else:
-                            if contributor_name not in resp['contributors']:
-                                resp['contributors'][contributor_name] = dict(
+                            if contributor_name not in contributors_dict:
+                                contributors_dict[contributor_name] = dict(
                                     commits=0,
                                     photo=response.get('avatar_url', contributor, default=''),
                                     url=response.get('html_url', contributor, default='')
                                 )
                             resp['commits_contributor'] += contributions
-                            resp['contributors'][contributor_name]['commits'] += contributions
+                            contributors_dict[contributor_name]['commits'] += contributions
         resp['commits_user_percentage'] = formatter.to_float((resp['commits_user'] / resp['commits']) * 100)
         resp['commits_contributor_percentage'] = formatter.to_float(
             (resp['commits_contributor'] / resp['commits']) * 100
         )
+        resp['contributors'] = []
+        for contributor_name, contributor_dict in contributors_dict.items():
+            contributor_dict['label'] = contributor_name
+            resp['contributors'].append(contributor_dict)
+        resp['contributors'] = sorted(resp['contributors'], key=lambda k: k['commits'], reverse=True)
 
         return response.make(error=False, response=resp)
 

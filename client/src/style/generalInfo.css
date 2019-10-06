@@ -14,8 +14,13 @@
 }
 
 .profileName{
+    display: flex;
+    justify-content: center;
     margin: auto;
     margin-left: 30px;
+    margin-block-start: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 .sectionContent{
@@ -79,5 +84,15 @@
     }
     .footerContent{
         padding: 0px;
+    }
+    .profileName{
+        font-size: 1.5em;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        margin-left: 30px;
+        margin-block-start: 0;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
     }
 }

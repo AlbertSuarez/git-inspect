@@ -1,10 +1,11 @@
 .sectionContentCode{
     display: flex;
     justify-content: space-around;
-    height: 88%;
+    height: 92%;
 }
 
 .pieContainer{
+    padding-top: 10%;
     width: 100%;
     height: 100%;
 }
@@ -15,18 +16,21 @@
 }
 
 .codeSubSection{
-    margin: 2;
     text-align: center;
 }
-
 
 @media (max-width: 700px) {
     .sectionContentCode{
         display: block;
     }
-
+    .pieContainer{
+        padding-top: 0px;
+    }
     .subSectionContainer{
         width: 100%;
         height: 45%;
+    }
+    .codeSubSection{
+        margin: 1px;
     }
 }

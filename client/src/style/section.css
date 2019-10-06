@@ -21,3 +21,9 @@
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 700px) {
+    .spotyButton{
+        margin-top: 20%
+    }
+}

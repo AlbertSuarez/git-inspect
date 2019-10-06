@@ -77,7 +77,13 @@ Git Inspect could evolve easily knowing the power of the data the GitHub has. We
 
 This is how our project looks like unifying frontend and backend. If you want to see more, just check [our live demo](http://134.209.244.212:8085).
 
-`TODO`
+![Screenshot 1](docs/screenshots/screenshot.PNG)
+![Screenshot 2](docs/screenshots/screenshot2.PNG)
+![Screenshot 3](docs/screenshots/screenshot3.PNG)
+![Screenshot 4](docs/screenshots/screenshot4.PNG)
+![Screenshot 5](docs/screenshots/screenshot5.PNG)
+![Screenshot 6](docs/screenshots/screenshot6.PNG)
+![Screenshot 7](docs/screenshots/screenshot7.PNG)
 
 ## Requirements
 

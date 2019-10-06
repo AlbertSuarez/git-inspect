@@ -27,16 +27,16 @@ class Commits extends React.Component<any, {}> {
                 </div>
                 <div className="sectionContent">
                     <div>
-                        <h2 className="repoSubSection">Size</h2>
+                        <h2 className="repoSubSection">Your commits</h2>
                         <div className="bigNumeberRepo">{this.props.user_main_data.commits_contributor}</div>
-                        <div className="bigNumeberRepoText">Total</div>
+                        <div className="bigNumeberRepoText">Percentage</div>
                         <div className="bigNumeberRepo">{this.props.user_main_data.commits_contributor_percentage + "%"}</div>
                         <div className="bigNumeberRepoText"></div>
                     </div>
                     <div>
-                        <h2 className="repoSubSection">Stars</h2>
+                        <h2 className="repoSubSection">Your contributors commits</h2>
                         <div className="bigNumeberRepo">{this.props.user_main_data.commits_user}</div>
-                        <div className="bigNumeberRepoText">Total</div>
+                        <div className="bigNumeberRepoText">Percentage</div>
                         <div className="bigNumeberRepo">{this.props.user_main_data.commits_user_percentage + "%"}</div>
                         <div className="bigNumeberRepoText"></div>
                     </div>

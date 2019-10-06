@@ -5,6 +5,7 @@ import { IGitInspectState } from '../../state';
 import Dashboard from '../dashboard/Dashboard';
 import HomePage from '../homePage/HomePage';
 import Cookies from 'universal-cookie';
+import 'toastr/build/toastr.css';
 import { GetPlaylist } from '../../actions/getPlaylist';
 import Loader from '../loader/Loader';
 

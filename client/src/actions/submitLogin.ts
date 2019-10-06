@@ -15,6 +15,8 @@ const SubmitLoginRequest = () =>({
     isBusy: true
 });
 
+const ErrorRequest = () =>({ type:ActionTypes.IS_BUSY_FALSE });
+
 export function SubmitLogin(username: string){
     return async (dispatch:any)=>{
         let service = new Service();
@@ -22,6 +24,9 @@ export function SubmitLogin(username: string){
         service.retriveUserProfile(username)
         .then((user_main_data: IUserMainModel)=>{
             dispatch(SubmitLoginSuccess(user_main_data));
+        })
+        .catch(()=>{
+            dispatch(ErrorRequest());
         });
     }
 }

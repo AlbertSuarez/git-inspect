@@ -1,3 +1,5 @@
+from multiprocessing.dummy import Pool as ThreadPool
+
 from src import *
 from src.helper import response
 from src.nlp import nltk
@@ -34,12 +36,10 @@ def playlist(code, github_user):
     most_common_words = nltk.extract_most_common(commit_messages)
 
     # Search for tracks
-    track_uri_list = set()
-    for word in most_common_words:
-        track_uri = spotify_api.search_for_tracks(access_token, word)
-        if track_uri:
-            track_uri_list.add(track_uri)
-    track_uri_list = list(track_uri_list)
+    with ThreadPool(CONCURRENT_POOL) as pool:
+        thread_args = [(access_token, word) for word in most_common_words]
+        track_uri_list = list(pool.imap(spotify_api.search_for_tracks, thread_args))
+        track_uri_list = [t for t in track_uri_list if t]
 
     # Add tracks to the playlist
     success = spotify_api.add_tracks_to_playlist(access_token, playlist_id, track_uri_list)

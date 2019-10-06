@@ -77,7 +77,8 @@ def post_playlist(access_token, spotify_user_id, github_user):
     return None, None
 
 
-def search_for_tracks(access_token, query):
+def search_for_tracks(args):
+    access_token, query = args
     for attempt in range(0, SPOTIFY_API_RETRIES):
         try:
             headers = {'Authorization': f'Bearer {access_token}'}

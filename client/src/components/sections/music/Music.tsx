@@ -24,7 +24,7 @@ class Music extends React.Component<any, {}> {
                 <div className="sectionContent"> 
                     <div className="spotyButton" onClick={()=>this.openSpotify()}>
                         <img src={logo} className="spotyImage"></img>
-                        <h2>Click here & enjoy it!</h2>
+                        <h2 className="spotyText">Click here & enjoy it!</h2>
                     </div>
                 </div>
                 <div className="footerContent">

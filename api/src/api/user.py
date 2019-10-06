@@ -2,7 +2,7 @@ import operator
 
 from src import *
 from src.helper import response, formatter, log
-from src.services import github
+from src.services import github_api
 
 
 def get(github_user):
@@ -11,7 +11,7 @@ def get(github_user):
         resp = {}
 
         # Basic information
-        basic_information = github.get_basic_user_information(github_user)
+        basic_information = github_api.get_basic_user_information(github_user)
         if not basic_information:
             return response.make(error=True, message=MESSAGE_USER_NOT_FOUND)
         resp['username'] = github_user
@@ -22,7 +22,7 @@ def get(github_user):
         resp['following'] = response.get('following', basic_information)
 
         # Repositories
-        repos_list = github.get_repos_from_user(github_user)
+        repos_list = github_api.get_repos_from_user(github_user)
         if not repos_list:
             return response.make(error=True, message=MESSAGE_USER_NOT_FOUND)
         resp['repo_amount'] = len(repos_list)
@@ -42,8 +42,8 @@ def get(github_user):
         for repo in repos_list:
             repo_name = response.get('name', repo)
             if repo_name:
-                language_response = github.get_languages(github_user, repo_name)
-                topic_response = github.get_topics(github_user, repo_name)
+                language_response = github_api.get_languages(github_user, repo_name)
+                topic_response = github_api.get_topics(github_user, repo_name)
                 if language_response:
                     for key, value in language_response.items():
                         if key not in languages_dict:
@@ -93,7 +93,7 @@ def get(github_user):
         for repo in repos_list:
             repo_name = response.get('name', repo)
             if repo_name:
-                contributor_response = github.get_contributors(github_user, repo_name)
+                contributor_response = github_api.get_contributors(github_user, repo_name)
                 for contributor in contributor_response:
                     contributor_name = response.get('login', contributor)
                     if contributor_name:

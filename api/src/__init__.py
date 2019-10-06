@@ -20,7 +20,7 @@ SPOTIFY_REDIRECT_URI = 'https://127.0.0.1:8085/'
 SPOTIFY_SCOPES = 'playlist-modify-private playlist-modify-public'
 SPOTIFY_API_LOGIN_URL = 'https://accounts.spotify.com/authorize'
 SPOTIFY_API_TOKEN_URL = 'https://accounts.spotify.com/api/token'
-SPOTIFY_API_CURRENT_USER = 'https://api.spotify.com/v1/search/me'
+SPOTIFY_API_CURRENT_USER = 'https://api.spotify.com/v1/me'
 
 MESSAGE_ERROR = 'Unexpected error.'
 MESSAGE_USER_NOT_FOUND = 'User not found.'

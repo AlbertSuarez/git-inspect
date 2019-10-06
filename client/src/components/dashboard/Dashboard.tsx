@@ -8,6 +8,8 @@ import YourRepositories from '../sections/YourRepositories/YourRepositories';
 import { Link, Element as Element, animateScroll as scroll } from "react-scroll";
 import Code from '../sections/code/Code';
 import Commits from '../sections/commits/Commits';
+import Friends from '../sections/friends/Friends';
+import Music from '../sections/music/Music';
 
 class Dashboard extends React.Component<any, any> {
 
@@ -18,7 +20,9 @@ class Dashboard extends React.Component<any, any> {
             generalInfoClass: "generalInfoShow",
             yourRepositoriesClass: "yourRepositoriesHidden",
             codeClass: "codeHidden",
-            commitsClass: "commitsHidden"
+            commitsClass: "commitsHidden",
+            friendsClass: "friendsHidden",
+            musicClass: "musicHidden"
         };
     }
     
@@ -40,6 +44,12 @@ class Dashboard extends React.Component<any, any> {
                 <div className={this.state.commitsClass}>
                     <Commits/>
                 </div>
+                <div className={this.state.friendsClass}>
+                    <Friends/>
+                </div>
+                <div className={this.state.musicClass}>
+                    <Music/>
+                </div>
             </div>
         );
     }
@@ -50,7 +60,9 @@ class Dashboard extends React.Component<any, any> {
                 generalInfoClass: "generalInfoShow",
                 yourRepositoriesClass: "yourRepositoriesHidden",
                 codeClass: "codeHidden",
-                commitsClass: "commitsHidden"
+                commitsClass: "commitsHidden",
+                friendsClass: "friendsHidden",
+                musicClass: "musicHidden"
             });
         }
         else if (nextProps.section=="YOUR REPOSITORIES"){
@@ -58,7 +70,9 @@ class Dashboard extends React.Component<any, any> {
                 generalInfoClass: "generalInfoHidden",
                 yourRepositoriesClass: "yourRepositoriesShow",
                 codeClass: "codeHidden",
-                commitsClass: "commitsHidden"
+                commitsClass: "commitsHidden",
+                friendsClass: "friendsHidden",
+                musicClass: "musicHidden"
             });
         }
         else if (nextProps.section=="CODE"){
@@ -66,7 +80,9 @@ class Dashboard extends React.Component<any, any> {
                 generalInfoClass: "generalInfoHidden",
                 yourRepositoriesClass: "yourRepositoriesHidden",
                 codeClass: "codeShow",
-                commitsClass: "commitsHidden"
+                commitsClass: "commitsHidden",
+                friendsClass: "friendsHidden",
+                musicClass: "musicHidden"
             });
         }
         else if (nextProps.section=="COMMITS"){
@@ -74,7 +90,29 @@ class Dashboard extends React.Component<any, any> {
                 generalInfoClass: "generalInfoHidden",
                 yourRepositoriesClass: "yourRepositoriesHidden",
                 codeClass: "codeHidden",
-                commitsClass: "commitsShow"
+                commitsClass: "commitsShow",
+                friendsClass: "friendsHidden",
+                musicClass: "musicHidden"
+            });
+        }
+        else if (nextProps.section=="FRIENDS"){
+            this.setState({
+                generalInfoClass: "generalInfoHidden",
+                yourRepositoriesClass: "yourRepositoriesHidden",
+                codeClass: "codeHidden",
+                commitsClass: "commitsHidden",
+                friendsClass: "friendsShow",
+                musicClass: "musicHidden"
+            });
+        }
+        else if (nextProps.section=="MUSIC"){
+            this.setState({
+                generalInfoClass: "generalInfoHidden",
+                yourRepositoriesClass: "yourRepositoriesHidden",
+                codeClass: "codeHidden",
+                commitsClass: "commitsHidden",
+                friendsClass: "friendsHidden",
+                musicClass: "musicShow"
             });
         }
     }

@@ -28,10 +28,10 @@ class Friends extends React.Component<any, {}> {
                             <div className="headerSection">
                                 <h1 className="profileName">Here are your contributors...</h1>
                             </div>
-                            <div className="sectionContent"> 
+                            <div className="sectionContentFriends"> 
                                 {this.props.user_main_data.contributors.map((contributor: any)=>{
                                     return(
-                                        <div className="friendsListCardContent">
+                                        <div className="friendsListCardContent" onClick={()=>this.openProfile(contributor.url)}>
                                             <div className="cardProfilePhoto">
                                                 <img src={contributor.photo}/>
                                             </div>
@@ -39,9 +39,6 @@ class Friends extends React.Component<any, {}> {
                                                 <div className="friendFullName">{contributor.label}</div>
                                                 <div className="friendExperience">{contributor.commits+" commits"}</div>
                                             </div>
-                                            {/* <div className="cardRightArrow">
-                                                <img className='friendsIcon' src={rightArrow}></img>
-                                            </div> */}
                                         </div>
                                     );
                                 })}
@@ -70,6 +67,10 @@ class Friends extends React.Component<any, {}> {
 
     private nextPage = () => {
         this.props.nextPage();
+    }
+
+    private openProfile = (url:string) => {
+        window.open(url, '_blank');
     }
 }
 

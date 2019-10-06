@@ -55,6 +55,8 @@
     display: flex;
     justify-content: space-around;
     margin-top: -2%;
+    padding: 15px;
+    background-color: white;
 }
 
 .space{

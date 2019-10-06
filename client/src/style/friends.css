@@ -1,4 +1,12 @@
   
+.sectionContentFriends{
+    flex-wrap: wrap;
+    display: flex;
+    max-height: 400px;
+    overflow-y: scroll;
+    justify-content: space-around;
+}
+
 .friendsListContent{
     margin-top: 78px;
 }
@@ -26,6 +34,8 @@
 .friendsListCardContent{
     display: flex;
     padding: 3px;
+    max-width: 250px;
+    cursor: pointer;
 }
 
 .friendsCard{

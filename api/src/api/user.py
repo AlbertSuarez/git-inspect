@@ -99,7 +99,7 @@ def get(github_user):
                     if contributor_name:
                         contributions = response.get('contributions', contributor, default=0)
                         resp['commits'] += contributions
-                        if contributor_name == github_user:
+                        if contributor_name.lower() == github_user.lower():
                             resp['commits_user'] += contributions
                         else:
                             if contributor_name not in contributors_dict:

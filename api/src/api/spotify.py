@@ -1,6 +1,7 @@
 from src import *
 from src.helper import response
-from src.services import spotify_api
+from src.nlp import nltk
+from src.services import spotify_api, github_api
 
 
 def login():
@@ -19,4 +20,30 @@ def playlist(code, github_user):
     if not user_id:
         return response.make(error=True, message=MESSAGE_SPOTIFY_NOT_FOUND)
 
-    return response.make(error=False, response=dict(id=user_id))
+    # Playlist generation
+    playlist_id, playlist_url = spotify_api.post_playlist(access_token, user_id, github_user)
+    if not playlist_id and not playlist_url:
+        return response.make(error=True, message=MESSAGE_SPOTIFY_PLAYLIST_ERROR)
+
+    # Retrieve commits from user
+    commit_messages = github_api.get_commit_messages(github_user)
+    if not commit_messages:
+        return response.make(error=True, message=MESSAGE_COMMIT_NOT_FOUND)
+
+    # Retrieve most common words
+    most_common_words = nltk.extract_most_common(commit_messages)
+
+    # Search for tracks
+    track_uri_list = set()
+    for word in most_common_words:
+        track_uri = spotify_api.search_for_tracks(access_token, word)
+        if track_uri:
+            track_uri_list.add(track_uri)
+    track_uri_list = list(track_uri_list)
+
+    # Add tracks to the playlist
+    success = spotify_api.add_tracks_to_playlist(access_token, playlist_id, track_uri_list)
+    if not success:
+        return response.make(error=True, message=MESSAGE_SPOTIFY_TRACK_ERROR)
+
+    return response.make(error=False, response=dict(url=playlist_url))

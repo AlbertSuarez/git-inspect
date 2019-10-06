@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import { Button } from '@material-ui/core';
 import '../../../style/section.css';
 import '../../../style/yourRepositories.css';
-import { NextPage } from '../../../actions/nextPage';
+import { NextPage, BackPage } from '../../../actions/nextPage';
 
 class Commits extends React.Component<any, {}> {
 
@@ -27,16 +27,16 @@ class Commits extends React.Component<any, {}> {
                 </div>
                 <div className="sectionContent">
                     <div>
-                        <h2 className="repoSubSection">Size</h2>
+                        <h2 className="repoSubSection">Your commits</h2>
                         <div className="bigNumeberRepo">{this.props.user_main_data.commits_contributor}</div>
-                        <div className="bigNumeberRepoText">Total</div>
+                        <div className="bigNumeberRepoText">Percentage</div>
                         <div className="bigNumeberRepo">{this.props.user_main_data.commits_contributor_percentage + "%"}</div>
                         <div className="bigNumeberRepoText"></div>
                     </div>
                     <div>
-                        <h2 className="repoSubSection">Stars</h2>
+                        <h2 className="repoSubSection">Your contributors commits</h2>
                         <div className="bigNumeberRepo">{this.props.user_main_data.commits_user}</div>
-                        <div className="bigNumeberRepoText">Total</div>
+                        <div className="bigNumeberRepoText">Percentage</div>
                         <div className="bigNumeberRepo">{this.props.user_main_data.commits_user_percentage + "%"}</div>
                         <div className="bigNumeberRepoText"></div>
                     </div>
@@ -45,7 +45,7 @@ class Commits extends React.Component<any, {}> {
                     <Button 
                         variant="contained" 
                         color="secondary"
-                        onClick={this.nextPage}
+                        onClick={this.backPage}
                         className="nextSectionButton">
                         Back
                     </Button>
@@ -61,19 +61,28 @@ class Commits extends React.Component<any, {}> {
         );
     }
 
+
     private nextPage = () => {
         this.props.nextPage();
+    }
+
+    private backPage = () => {
+        this.props.backPage();
     }
 }
 
 interface IDispatch{
     nextPage:() => void;
+    backPage:() => void;
 }
 
 const mapDispatchToProps = (dispatch:any):IDispatch => {
     return{
         nextPage:() => {
             return dispatch(NextPage());
+        },
+        backPage:() => {
+            return dispatch(BackPage());
         }
     };
 };

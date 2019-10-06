@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Provider, ProviderProps } from 'react-redux';
-import { createStore } from '../../store';
 import { SetInitialState } from '../../actions/setInitialState';
 import { IGitInspectState } from '../../state';
 import Dashboard from '../dashboard/Dashboard';
 import HomePage from '../homePage/HomePage';
 import Cookies from 'universal-cookie';
+import 'toastr/build/toastr.css';
 import { GetPlaylist } from '../../actions/getPlaylist';
+import Loader from '../loader/Loader';
 
 class GitInspect extends React.Component<any, any> {
 
@@ -34,6 +34,7 @@ class GitInspect extends React.Component<any, any> {
     public render(): React.ReactElement<any>{
         return(
             <div>
+                <Loader/>
                 {this.state.username=="" ? 
                 this.props.page=="HOME" ? 
                     <HomePage/> : <Dashboard/> : null       

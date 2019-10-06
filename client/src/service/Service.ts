@@ -1,5 +1,6 @@
 import IService from "./IService";
 import {IUserMainModel} from '../models/IUserMainModel';
+import * as toastr from 'toastr';
 
 export default class Service implements IService {
 
@@ -14,7 +15,11 @@ export default class Service implements IService {
             .then(response=>{
                 response.json()
                 .then(data=>{
-                    resolve(data.response);
+                    if(data.error==true) {
+                        reject();
+                        toastr.error(data.message);
+                    }
+                    else resolve(data.response);
                 });
             })
         });
@@ -31,7 +36,11 @@ export default class Service implements IService {
             .then(response=>{
                 response.json()
                 .then(data=>{
-                    resolve(data.response.redirect);
+                    if(data.error==true) {
+                        reject();
+                        toastr.error(data.message);
+                    }
+                    else resolve(data.response.redirect);
                 });
             })
         });
@@ -48,7 +57,11 @@ export default class Service implements IService {
             .then(response=>{
                 response.json()
                 .then(data=>{
-                    resolve(data.response.url);
+                    if(data.error==true) {
+                        reject();
+                        toastr.error(data.message);
+                    }
+                    else resolve(data.response.url);
                 });
             })
         });

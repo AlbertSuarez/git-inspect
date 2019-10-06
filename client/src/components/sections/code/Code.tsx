@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import { IGitInspectState } from '../../../state';
 import '../../../style/section.css';
-import { NextPage } from '../../../actions/nextPage';
+import { NextPage,BackPage } from '../../../actions/nextPage';
 import { Button } from '@material-ui/core';
 import { Doughnut } from 'react-chartjs-2';
 import '../../../style/code.css';
@@ -71,7 +71,7 @@ class Code extends React.Component<any, {}> {
                     <Button 
                         variant="contained" 
                         color="secondary"
-                        onClick={this.nextPage}
+                        onClick={this.backPage}
                         className="nextSectionButton">
                         Back
                     </Button>
@@ -90,16 +90,24 @@ class Code extends React.Component<any, {}> {
     private nextPage = () => {
         this.props.nextPage();
     }
+
+    private backPage = () => {
+        this.props.backPage();
+    }
 }
 
 interface IDispatch{
     nextPage:() => void;
+    backPage:() => void;
 }
 
 const mapDispatchToProps = (dispatch:any):IDispatch => {
     return{
         nextPage:() => {
             return dispatch(NextPage());
+        },
+        backPage:() => {
+            return dispatch(BackPage());
         }
     };
 };

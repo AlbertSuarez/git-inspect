@@ -92,7 +92,8 @@ def get_topics(args):
     return None
 
 
-def get_contributors(username, repository):
+def get_contributors(args):
+    username, repository = args
     for attempt in range(0, GITHUB_API_RETRIES):
         try:
             endpoint = GITHUB_CONTRIBUTORS_ENDPOINT.format(username=username, repository=repository)

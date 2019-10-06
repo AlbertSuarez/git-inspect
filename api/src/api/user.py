@@ -90,15 +90,18 @@ def get(github_user):
                 resp['topics'].append(dict(label='others', amount=topic_amount, percentage=percentage))
                 break
 
-        # Contributors
+        # Contributors - thread
+        with ThreadPool(CONCURRENT_POOL) as pool:
+            thread_args = [(github_user, response.get('name', r)) for r in repos_list if response.get('name', r)]
+            contributor_response_list = list(pool.imap(github_api.get_contributors, thread_args))
+
+        # Contributors - save
         resp['commits'] = 0
         resp['commits_user'] = 0
         resp['commits_contributor'] = 0
         contributors_dict = {}
-        for repo in repos_list:
-            repo_name = response.get('name', repo)
-            if repo_name:
-                contributor_response = github_api.get_contributors(github_user, repo_name)
+        for contributor_response in contributor_response_list:
+            if contributor_response:
                 for contributor in contributor_response:
                     contributor_name = response.get('login', contributor)
                     if contributor_name:

@@ -9,6 +9,8 @@ export function NextPage(){
         let page = "GENERAL INFO";
 
         if(state.section=="GENERAL INFO") page = "YOUR REPOSITORIES";
+        else if(state.section=="YOUR REPOSITORIES") page = "CODE";
+        
         dispatch({ type: ActionTypes.NEXT_PAGE, section: page});
     }
 }

@@ -6,6 +6,7 @@ import { NextPage } from '../../actions/nextPage';
 import GeneralInfo from '../sections/generalInfo/GeneralInfo';
 import YourRepositories from '../sections/YourRepositories/YourRepositories';
 import { Link, Element as Element, animateScroll as scroll } from "react-scroll";
+import Code from '../sections/code/Code';
 
 class Dashboard extends React.Component<any, any> {
 
@@ -14,7 +15,8 @@ class Dashboard extends React.Component<any, any> {
 
         this.state = {
             generalInfoClass: "generalInfoShow",
-            yourRepositoriesClass: "yourRepositoriesHidden"
+            yourRepositoriesClass: "yourRepositoriesHidden",
+            codeClass: "codeHidden"
         };
     }
     
@@ -30,6 +32,9 @@ class Dashboard extends React.Component<any, any> {
                 <div className={this.state.yourRepositoriesClass}>
                     <YourRepositories/>
                 </div>
+                <div className={this.state.codeClass}>
+                    <Code/>
+                </div>
             </div>
         );
     }
@@ -38,13 +43,22 @@ class Dashboard extends React.Component<any, any> {
         if(nextProps.section=="GENERAL INFO") {
             this.setState({
                 generalInfoClass: "generalInfoShow",
-                yourRepositoriesClass: "yourRepositoriesHidden"
+                yourRepositoriesClass: "yourRepositoriesHidden",
+                codeClass: "codeHidden"
             });
         }
         else if (nextProps.section=="YOUR REPOSITORIES"){
             this.setState({
                 generalInfoClass: "generalInfoHidden",
-                yourRepositoriesClass: "yourRepositoriesShow"
+                yourRepositoriesClass: "yourRepositoriesShow",
+                codeClass: "codeHidden"
+            });
+        }
+        else if (nextProps.section=="CODE"){
+            this.setState({
+                generalInfoClass: "generalInfoHidden",
+                yourRepositoriesClass: "yourRepositoriesHidden",
+                codeClass: "codeShow"
             });
         }
     }

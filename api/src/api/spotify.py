@@ -19,4 +19,9 @@ def playlist(code, github_user):
     if not user_id:
         return response.make(error=True, message=MESSAGE_SPOTIFY_NOT_FOUND)
 
-    return response.make(error=False, response=dict(id=user_id))
+    # Playlist generation
+    playlist_id, playlist_url = spotify_api.post_playlist(access_token, user_id, github_user)
+    if not playlist_id and not playlist_url:
+        return response.make(error=True, message=MESSAGE_SPOTIFY_PLAYLIST_ERROR)
+
+    return response.make(error=False, response=dict(url=playlist_url))

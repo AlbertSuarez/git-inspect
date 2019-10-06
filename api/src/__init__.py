@@ -31,6 +31,7 @@ MESSAGE_USER_NOT_FOUND = 'User not found.'
 MESSAGE_REPOS_NOT_FOUND = 'You should have at least one public repository.'
 MESSAGE_TOKEN_NOT_FOUND = 'Error while retrieving the Spotify token.'
 MESSAGE_SPOTIFY_NOT_FOUND = 'Spotify user not found.'
+MESSAGE_SPOTIFY_PLAYLIST_ERROR = 'Spotify playlist cannot be created.'
 
 
 __all__ = [
@@ -62,5 +63,6 @@ __all__ = [
     'MESSAGE_USER_NOT_FOUND',
     'MESSAGE_REPOS_NOT_FOUND',
     'MESSAGE_TOKEN_NOT_FOUND',
-    'MESSAGE_SPOTIFY_NOT_FOUND'
+    'MESSAGE_SPOTIFY_NOT_FOUND',
+    'MESSAGE_SPOTIFY_PLAYLIST_ERROR'
 ]

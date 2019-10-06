@@ -1,6 +1,7 @@
-from urllib.parse import quote
-
+import time
 import requests
+
+from urllib.parse import quote
 
 from src import *
 from src.helper import env, response, log
@@ -35,6 +36,7 @@ def get_access_token(code):
         except Exception as e:
             if attempt < SPOTIFY_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(SPOTIFY_API_RTD)
             else:
                 log.error(f'Error in {get_access_token.__name__} function. [{e}]')
     return None
@@ -51,6 +53,7 @@ def get_current_user_id(access_token):
         except Exception as e:
             if attempt < SPOTIFY_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(SPOTIFY_API_RTD)
             else:
                 log.error(f'Error in {get_current_user_id.__name__} function. [{e}]')
     return None
@@ -72,6 +75,7 @@ def post_playlist(access_token, spotify_user_id, github_user):
         except Exception as e:
             if attempt < SPOTIFY_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(SPOTIFY_API_RTD)
             else:
                 log.error(f'Error in {post_playlist.__name__} function. [{e}]')
     return None, None
@@ -96,6 +100,7 @@ def search_for_tracks(args):
         except Exception as e:
             if attempt < SPOTIFY_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(SPOTIFY_API_RTD)
             else:
                 log.error(f'Error in {search_for_tracks.__name__} function. [{e}]')
     return None
@@ -113,6 +118,7 @@ def add_tracks_to_playlist(access_token, playlist_id, track_uri_list):
         except Exception as e:
             if attempt < SPOTIFY_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(SPOTIFY_API_RTD)
             else:
                 log.error(f'Error in {add_tracks_to_playlist.__name__} function. [{e}]')
     return None

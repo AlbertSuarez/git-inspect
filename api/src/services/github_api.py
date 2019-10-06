@@ -1,3 +1,4 @@
+import time
 import requests
 
 from src import *
@@ -17,6 +18,7 @@ def get_basic_user_information(username):
         except Exception as e:
             if attempt < GITHUB_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(GITHUB_API_RTD)
             else:
                 log.error(f'Error in {get_basic_user_information.__name__} function. [{e}]')
     return None
@@ -43,6 +45,7 @@ def get_repos_from_user(username):
             except Exception as e:
                 if attempt < GITHUB_API_RETRIES - 1:
                     log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                    time.sleep(GITHUB_API_RTD)
                 else:
                     log.error(f'Error in {get_repos_from_user.__name__} function. [{e}]')
                     return None
@@ -61,6 +64,7 @@ def get_languages(username, repository):
         except Exception as e:
             if attempt < GITHUB_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(GITHUB_API_RTD)
             else:
                 log.error(f'Error in {get_languages.__name__} function. [{e}]')
     return None
@@ -79,6 +83,7 @@ def get_topics(username, repository):
         except Exception as e:
             if attempt < GITHUB_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(GITHUB_API_RTD)
             else:
                 log.error(f'Error in {get_topics.__name__} function. [{e}]')
     return None
@@ -96,6 +101,7 @@ def get_contributors(username, repository):
         except Exception as e:
             if attempt < GITHUB_API_RETRIES - 1:
                 log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                time.sleep(GITHUB_API_RTD)
             else:
                 log.error(f'Error in {get_contributors.__name__} function. [{e}]')
     return None
@@ -127,6 +133,7 @@ def get_commit_messages(username):
             except Exception as e:
                 if attempt < GITHUB_API_RETRIES - 1:
                     log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+                    time.sleep(GITHUB_API_RTD)
                 else:
                     log.error(f'Error in {get_commit_messages.__name__} function. [{e}]')
                     return None

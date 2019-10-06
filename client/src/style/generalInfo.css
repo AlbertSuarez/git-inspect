@@ -21,7 +21,7 @@
 .sectionContent{
     display: flex;
     justify-content: space-around;
-    height: 50%;
+    height: 63%;
 }
 
 .subSectionTitleContainer{
@@ -48,6 +48,7 @@
 .bigNumeberText{
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .footerContent{
@@ -62,4 +63,13 @@
 
 .nextSectionButton{
     width: 45%;
+}
+
+@media (max-width: 700px) {
+    h2 {
+        font-size: 1em;
+    }
+    .bigNumeberText{
+        font-size: 0.8;
+    }
 }

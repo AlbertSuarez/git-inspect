@@ -64,3 +64,15 @@
     transform: translate(0,3em);
     transition: all 250ms linear;
 }
+
+@media (max-width: 700px) {
+    .dashboardContent{
+        left: 4%;
+    }
+    .generalInfoShow{
+        width: 86%;
+    }
+    .yourRepositoriesShow{
+        width: 86%;
+    }
+}

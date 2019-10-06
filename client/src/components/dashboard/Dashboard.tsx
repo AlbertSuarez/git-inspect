@@ -7,6 +7,7 @@ import GeneralInfo from '../sections/generalInfo/GeneralInfo';
 import YourRepositories from '../sections/YourRepositories/YourRepositories';
 import { Link, Element as Element, animateScroll as scroll } from "react-scroll";
 import Code from '../sections/code/Code';
+import Commits from '../sections/commits/Commits';
 
 class Dashboard extends React.Component<any, any> {
 
@@ -16,7 +17,8 @@ class Dashboard extends React.Component<any, any> {
         this.state = {
             generalInfoClass: "generalInfoShow",
             yourRepositoriesClass: "yourRepositoriesHidden",
-            codeClass: "codeHidden"
+            codeClass: "codeHidden",
+            commitsClass: "commitsHidden"
         };
     }
     
@@ -35,6 +37,9 @@ class Dashboard extends React.Component<any, any> {
                 <div className={this.state.codeClass}>
                     <Code/>
                 </div>
+                <div className={this.state.commitsClass}>
+                    <Commits/>
+                </div>
             </div>
         );
     }
@@ -44,21 +49,32 @@ class Dashboard extends React.Component<any, any> {
             this.setState({
                 generalInfoClass: "generalInfoShow",
                 yourRepositoriesClass: "yourRepositoriesHidden",
-                codeClass: "codeHidden"
+                codeClass: "codeHidden",
+                commitsClass: "commitsHidden"
             });
         }
         else if (nextProps.section=="YOUR REPOSITORIES"){
             this.setState({
                 generalInfoClass: "generalInfoHidden",
                 yourRepositoriesClass: "yourRepositoriesShow",
-                codeClass: "codeHidden"
+                codeClass: "codeHidden",
+                commitsClass: "commitsHidden"
             });
         }
         else if (nextProps.section=="CODE"){
             this.setState({
                 generalInfoClass: "generalInfoHidden",
                 yourRepositoriesClass: "yourRepositoriesHidden",
-                codeClass: "codeShow"
+                codeClass: "codeShow",
+                commitsClass: "commitsHidden"
+            });
+        }
+        else if (nextProps.section=="COMMITS"){
+            this.setState({
+                generalInfoClass: "generalInfoHidden",
+                yourRepositoriesClass: "yourRepositoriesHidden",
+                codeClass: "codeHidden",
+                commitsClass: "commitsShow"
             });
         }
     }

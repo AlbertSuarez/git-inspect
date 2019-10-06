@@ -90,6 +90,31 @@
     transition: all 250ms linear;
 }
 
+.commitsShow{
+    width: 70%;
+    z-index: 3;
+    position: absolute;
+    flex: 0 0 auto;
+    height: 96%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    opacity: 1;
+    transform: translate(0,0em);
+    transition: all 250ms linear;
+}
+
+.commitsHidden{
+    position: absolute;
+    width: 70%;
+    flex: 0 0 auto;
+    height: 96%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    opacity: 0;
+    transform: translate(0,3em);
+    transition: all 250ms linear;
+}
+
 @media (max-width: 700px) {
     .dashboardContent{
         left: 4%;
@@ -101,6 +126,9 @@
         width: 86%;
     }
     .codeShow{
+        width: 86%;
+    }
+    .commitsShow{
         width: 86%;
     }
 }

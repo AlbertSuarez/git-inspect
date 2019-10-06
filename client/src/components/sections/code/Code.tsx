@@ -8,18 +8,6 @@ import { Button } from '@material-ui/core';
 import { Doughnut } from 'react-chartjs-2';
 import '../../../style/code.css';
 
-const data = {
-    datasets: [{
-        data: [10, 20, 30],
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
-    }],
-    labels: [
-        'Red',
-        'Yellow',
-        'Blue'
-    ]
-};
-
 let dataCode = {};
 let dataTopics = {};
 
@@ -27,10 +15,38 @@ class Code extends React.Component<any, {}> {
 
     constructor(props:any){
         super(props);
-        // props.user_main_data.languages.forEach((element:any) => {
-        //     console.log("elemement",element);
-        // });
-        console.log("WHAT I HAVVE",this.props.user_main_data.languages);
+
+        //CODE
+        let labelsCode: any[] = [];
+        let valuesCode: any[] = [];
+        props.user_main_data.languages.forEach((element:any) => {
+            labelsCode.push(element.label);
+            valuesCode.push(element.amount);
+        });
+
+        dataCode = {
+            datasets:[{
+                data: valuesCode,
+                backgroundColor: ["#88c440", "#ffc100","#009687","#ff5505","#6633b9","#9c1ab1","#eb1460","#00bbd5"]
+            }],
+            labels: labelsCode
+        };
+
+        //TOPICS
+        let labelsTopics: any[] = [];
+        let valuesTopics: any[] = [];
+        props.user_main_data.topics.forEach((element:any) => {
+            labelsTopics.push(element.label);
+            valuesTopics.push(element.amount);
+        });
+
+        dataTopics = {
+            datasets:[{
+                data: valuesTopics,
+                backgroundColor: ["#88c440", "#ffc100","#009687","#ff5505","#6633b9","#9c1ab1","#eb1460","#00bbd5"]
+            }],
+            labels: labelsTopics
+        };
     }
 
     public render(): React.ReactElement<any>{
@@ -41,13 +57,13 @@ class Code extends React.Component<any, {}> {
                     <div className="subSectionContainer">
                         <h2 className="codeSubSection">Languages</h2>
                         <div className="pieContainer">
-                            <Doughnut data={data}/>
+                            <Doughnut data={dataCode}/>
                         </div>
                     </div>
                     <div className="subSectionContainer">
                         <h2 className="codeSubSection">Topics</h2>
                         <div className="pieContainer">
-                            <Doughnut data={data}/>
+                            { this.props.user_main_data.topics.length==0 ? <div>No topics</div> : <Doughnut data={dataTopics}/>}
                         </div>
                     </div>
                 </div>

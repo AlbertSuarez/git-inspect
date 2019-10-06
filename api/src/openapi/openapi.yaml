@@ -78,6 +78,12 @@ paths:
       description: Invoke this endpoint to an Spotify playlist based on a GitHub username.
       operationId: src.api.spotify.playlist
       parameters:
+        - name: code
+          in: query
+          description: Specifies the OAuth2 code.
+          required: true
+          schema:
+            type: string
         - name: github_user
           in: query
           description: Specifies the user to retrieve.

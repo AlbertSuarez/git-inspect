@@ -11,6 +11,12 @@ export default (state: IGitInspectState = initialState, action: Action) =>{
                 page: "HOME"
             };
 
+        case ActionTypes.SUBMIT_USERNAME_REQUEST:
+            return {
+                ...state,
+                isBusy: action.isBusy
+            }
+        
         case ActionTypes.SUBMIT_USERNAME_SUCCESS:
             return {
                 ...state,

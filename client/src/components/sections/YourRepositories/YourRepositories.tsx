@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import { Button } from '@material-ui/core';
 import '../../../style/section.css';
 import '../../../style/yourRepositories.css';
-import { NextPage } from '../../../actions/nextPage';
+import { NextPage, BackPage } from '../../../actions/nextPage';
 
 class YourRepositories extends React.Component<any, {}> {
 
@@ -59,7 +59,7 @@ class YourRepositories extends React.Component<any, {}> {
                     <Button 
                         variant="contained" 
                         color="secondary"
-                        onClick={this.nextPage}
+                        onClick={this.backPage}
                         className="nextSectionButton">
                         Back
                     </Button>
@@ -77,17 +77,25 @@ class YourRepositories extends React.Component<any, {}> {
 
     private nextPage = () => {
         this.props.nextPage();
-    } 
+    }
+
+    private backPage = () => {
+        this.props.backPage();
+    }
 }
 
 interface IDispatch{
     nextPage:() => void;
+    backPage:() => void;
 }
 
 const mapDispatchToProps = (dispatch:any):IDispatch => {
     return{
         nextPage:() => {
             return dispatch(NextPage());
+        },
+        backPage:() => {
+            return dispatch(BackPage());
         }
     };
 };

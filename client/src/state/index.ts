@@ -10,6 +10,6 @@ export interface IGitInspectState {
 export const initialState: IGitInspectState = {
     page: "HOME",
     user_main_data: undefined,
-    isBusy: true,
+    isBusy: false,
     section: "GENERAL INFO"
 }

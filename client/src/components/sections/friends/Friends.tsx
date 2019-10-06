@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import { IGitInspectState } from '../../../state';
-import { NextPage } from '../../../actions/nextPage';
+import { NextPage, BackPage } from '../../../actions/nextPage';
 import { Button } from '@material-ui/core';
 import '../../../style/section.css';
 import '../../../style/friends.css';
@@ -49,7 +49,7 @@ class Friends extends React.Component<any, {}> {
                     <Button 
                         variant="contained" 
                         color="secondary"
-                        onClick={this.nextPage}
+                        onClick={this.backPage}
                         className="nextSectionButton">
                         Back
                     </Button>
@@ -69,6 +69,10 @@ class Friends extends React.Component<any, {}> {
         this.props.nextPage();
     }
 
+    private backPage = () => {
+        this.props.backPage();
+    }
+
     private openProfile = (url:string) => {
         window.open(url, '_blank');
     }
@@ -76,12 +80,16 @@ class Friends extends React.Component<any, {}> {
 
 interface IDispatch{
     nextPage:() => void;
+    backPage:() => void;
 }
 
 const mapDispatchToProps = (dispatch:any):IDispatch => {
     return{
         nextPage:() => {
             return dispatch(NextPage());
+        },
+        backPage:() => {
+            return dispatch(BackPage());
         }
     };
 };

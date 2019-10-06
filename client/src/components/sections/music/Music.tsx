@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import { IGitInspectState } from '../../../state';
-import { NextPage } from '../../../actions/nextPage';
+import { NextPage, BackPage } from '../../../actions/nextPage';
 import { Button } from '@material-ui/core';
 import '../../../style/section.css';
 import logo from '../../../assets/spotyLogo.png';
@@ -31,7 +31,7 @@ class Music extends React.Component<any, {}> {
                     <Button 
                         variant="contained" 
                         color="secondary"
-                        onClick={this.nextPage}
+                        onClick={this.backPage}
                         className="nextSectionButton">
                         Back
                     </Button>
@@ -41,8 +41,8 @@ class Music extends React.Component<any, {}> {
         );
     };
 
-    private nextPage = () => {
-        this.props.nextPage();
+    private backPage = () => {
+        this.props.backPage();
     }
 
     private openSpotify(){
@@ -54,14 +54,14 @@ class Music extends React.Component<any, {}> {
 }
 
 interface IDispatch{
-    nextPage:() => void;
+    backPage:() => void;
     loginSpotify:() => void;
 }
 
 const mapDispatchToProps = (dispatch:any):IDispatch => {
     return{
-        nextPage:() => {
-            return dispatch(NextPage());
+        backPage:() => {
+            return dispatch(BackPage());
         },
         loginSpotify:() => {
             return dispatch(LoginSpotify());

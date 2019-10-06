@@ -5,7 +5,7 @@ export function GetPlaylist(code:string,username:string){
         let service = new Service();
         service.retriveSpotyPlaylist(code,username)
         .then((url: string)=>{
-            window.open(url, '_blank');
+            window.open(url);
         });
     }
 }

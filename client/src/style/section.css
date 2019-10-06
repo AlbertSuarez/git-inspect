@@ -4,3 +4,20 @@
     height: 100%;
     margin-right: 2%;
 }
+
+.spotyButton{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.spotyImage{
+    width: 30%;
+    margin-left: 35%;
+}
+
+.spotyText{
+    display: flex;
+    justify-content: center;
+}

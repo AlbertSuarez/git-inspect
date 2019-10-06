@@ -77,4 +77,7 @@
     .bigNumeber{
         font-size: 3.5rem;
     }
+    .footerContent{
+        padding: 0px;
+    }
 }

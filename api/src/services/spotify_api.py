@@ -75,3 +75,26 @@ def post_playlist(access_token, spotify_user_id, github_user):
             else:
                 log.error(f'Error in {post_playlist.__name__} function. [{e}]')
     return None, None
+
+
+def search_for_tracks(access_token, query):
+    for attempt in range(0, SPOTIFY_API_RETRIES):
+        try:
+            headers = {'Authorization': f'Bearer {access_token}'}
+            params = {'q': query, 'type': 'track', 'limit': 1}
+            endpoint = SPOTIFY_API_SEARCH
+            track_response = requests.get(endpoint, params=params, headers=headers, timeout=GITHUB_API_TIMEOUT)
+            if track_response.ok:
+                track_response = track_response.json()
+                track_item = response.get('tracks', track_response)
+                if track_item:
+                    for track_dict in response.get('items', track_item, default=[]):
+                        track_uri = response.get('uri', track_dict)
+                        if track_uri:
+                            return track_uri
+        except Exception as e:
+            if attempt < SPOTIFY_API_RETRIES - 1:
+                log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+            else:
+                log.error(f'Error in {search_for_tracks.__name__} function. [{e}]')
+    return None

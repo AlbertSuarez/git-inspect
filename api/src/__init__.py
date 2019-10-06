@@ -25,6 +25,7 @@ SPOTIFY_API_LOGIN_URL = 'https://accounts.spotify.com/authorize'
 SPOTIFY_API_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 SPOTIFY_API_CURRENT_USER = 'https://api.spotify.com/v1/me'
 SPOTIFY_API_CREATE_PLAYLIST = 'https://api.spotify.com/v1/users/{user_id}/playlists'
+SPOTIFY_API_SEARCH = 'https://api.spotify.com/v1/search'
 
 MESSAGE_ERROR = 'Unexpected error.'
 MESSAGE_USER_NOT_FOUND = 'User not found.'
@@ -32,6 +33,7 @@ MESSAGE_REPOS_NOT_FOUND = 'You should have at least one public repository.'
 MESSAGE_TOKEN_NOT_FOUND = 'Error while retrieving the Spotify token.'
 MESSAGE_SPOTIFY_NOT_FOUND = 'Spotify user not found.'
 MESSAGE_SPOTIFY_PLAYLIST_ERROR = 'Spotify playlist cannot be created.'
+MESSAGE_COMMIT_NOT_FOUND = 'Any commit could be retrieved.'
 
 
 __all__ = [
@@ -59,10 +61,12 @@ __all__ = [
     'SPOTIFY_API_TOKEN_URL',
     'SPOTIFY_API_CURRENT_USER',
     'SPOTIFY_API_CREATE_PLAYLIST',
+    'SPOTIFY_API_SEARCH',
     'MESSAGE_ERROR',
     'MESSAGE_USER_NOT_FOUND',
     'MESSAGE_REPOS_NOT_FOUND',
     'MESSAGE_TOKEN_NOT_FOUND',
     'MESSAGE_SPOTIFY_NOT_FOUND',
-    'MESSAGE_SPOTIFY_PLAYLIST_ERROR'
+    'MESSAGE_SPOTIFY_PLAYLIST_ERROR',
+    'MESSAGE_COMMIT_NOT_FOUND'
 ]

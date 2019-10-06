@@ -56,33 +56,33 @@ def get(github_user):
                         topics_dict[topic] += 1
 
         # Languages - percentage
-        resp['languages'] = {}
+        resp['languages'] = []
         total_languages = sum(languages_dict.values())
         sorted_languages = sorted(languages_dict.items(), key=operator.itemgetter(1), reverse=True)
         for idx in range(0, len(sorted_languages)):
             if idx < GITHUB_LANGUAGES_MAX:
                 language_name, language_amount = sorted_languages[idx]
                 percentage = formatter.to_float((language_amount / total_languages) * 100)
-                resp['languages'][language_name] = dict(amount=language_amount, percentage=percentage)
+                resp['languages'].append(dict(label=language_name, amount=language_amount, percentage=percentage))
             else:
                 language_amount = sum([v[1] for v in sorted_languages[GITHUB_LANGUAGES_MAX:]])
                 percentage = formatter.to_float((language_amount / total_languages) * 100)
-                resp['languages']['Others'] = dict(amount=language_amount, percentage=percentage)
+                resp['languages'].append(dict(label='Others', amount=language_amount, percentage=percentage))
                 break
 
         # Topics - percentage
-        resp['topics'] = {}
+        resp['topics'] = []
         total_topics = sum(topics_dict.values())
         sorted_topics = sorted(topics_dict.items(), key=operator.itemgetter(1), reverse=True)
         for idx in range(0, len(sorted_topics)):
             if idx < GITHUB_TOPICS_MAX:
-                language_name, language_amount = sorted_topics[idx]
-                percentage = formatter.to_float((language_amount / total_topics) * 100)
-                resp['topics'][language_name] = dict(amount=language_amount, percentage=percentage)
+                topic_name, topic_amount = sorted_topics[idx]
+                percentage = formatter.to_float((topic_amount / total_topics) * 100)
+                resp['topics'].append(dict(label=topic_name, amount=topic_amount, percentage=percentage))
             else:
-                language_amount = sum([v[1] for v in sorted_topics[GITHUB_TOPICS_MAX:]])
-                percentage = formatter.to_float((language_amount / total_topics) * 100)
-                resp['topics']['Others'] = dict(amount=language_amount, percentage=percentage)
+                topic_amount = sum([v[1] for v in sorted_topics[GITHUB_TOPICS_MAX:]])
+                percentage = formatter.to_float((topic_amount / total_topics) * 100)
+                resp['topics'].append(dict(label='others', amount=topic_amount, percentage=percentage))
                 break
 
         # Contributors

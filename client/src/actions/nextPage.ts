@@ -11,6 +11,8 @@ export function NextPage(){
         if(state.section=="GENERAL INFO") page = "YOUR REPOSITORIES";
         else if(state.section=="YOUR REPOSITORIES") page = "CODE";
         else if(state.section=="CODE") page = "COMMITS";
+        else if(state.section=="COMMITS") page = "FRIENDS";
+        else if(state.section=="FRIENDS") page = "MUSIC";
         
         dispatch({ type: ActionTypes.NEXT_PAGE, section: page});
     }

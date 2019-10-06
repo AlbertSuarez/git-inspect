@@ -1,5 +1,7 @@
 import operator
 
+from multiprocessing.dummy import Pool as ThreadPool
+
 from src import *
 from src.helper import response, formatter, log
 from src.services import github_api
@@ -36,24 +38,27 @@ def get(github_user):
         resp['repo_avg_forks'] = formatter.to_float(resp['repo_total_forks'] / resp['repo_amount'])
         resp['repo_avg_open_issues'] = formatter.to_float(resp['repo_total_open_issues'] / resp['repo_amount'])
 
+        # Languages & topics - threads
+        with ThreadPool(CONCURRENT_POOL) as pool:
+            thread_args = [(github_user, response.get('name', r)) for r in repos_list if response.get('name', r)]
+            language_response_list = list(pool.imap(github_api.get_languages, thread_args))
+            topic_response_list = list(pool.imap(github_api.get_topics, thread_args))
+
         # Languages & topics - amount
         languages_dict = {}
+        for language_response in language_response_list:
+            if language_response:
+                for key, value in language_response.items():
+                    if key not in languages_dict:
+                        languages_dict[key] = 0
+                    languages_dict[key] += value
         topics_dict = {}
-        for repo in repos_list:
-            repo_name = response.get('name', repo)
-            if repo_name:
-                language_response = github_api.get_languages(github_user, repo_name)
-                topic_response = github_api.get_topics(github_user, repo_name)
-                if language_response:
-                    for key, value in language_response.items():
-                        if key not in languages_dict:
-                            languages_dict[key] = 0
-                        languages_dict[key] += value
-                if topic_response:
-                    for topic in topic_response:
-                        if topic not in topics_dict:
-                            topics_dict[topic] = 0
-                        topics_dict[topic] += 1
+        for topic_response in topic_response_list:
+            if topic_response:
+                for topic in topic_response:
+                    if topic not in topics_dict:
+                        topics_dict[topic] = 0
+                    topics_dict[topic] += 1
 
         # Languages - percentage
         resp['languages'] = []

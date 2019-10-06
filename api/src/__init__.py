@@ -3,6 +3,7 @@ CONCURRENT_POOL = 10
 GITHUB_API_RETRIES = 3
 GITHUB_API_RTD = 5
 GITHUB_API_TIMEOUT = 15
+GITHUB_PER_PAGE = 100
 GITHUB_SINGLE_USER_ENDPOINT = 'https://api.github.com/users/{username}'
 GITHUB_USER_REPOS_ENDPOINT = 'https://api.github.com/users/{username}/repos'
 GITHUB_LANGUAGES_ENDPOINT = 'https://api.github.com/repos/{username}/{repository}/languages'
@@ -45,6 +46,7 @@ __all__ = [
     'GITHUB_API_RETRIES',
     'GITHUB_API_RTD',
     'GITHUB_API_TIMEOUT',
+    'GITHUB_PER_PAGE',
     'GITHUB_SINGLE_USER_ENDPOINT',
     'GITHUB_USER_REPOS_ENDPOINT',
     'GITHUB_LANGUAGES_ENDPOINT',

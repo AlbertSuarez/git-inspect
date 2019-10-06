@@ -10,6 +10,7 @@ export function NextPage(){
 
         if(state.section=="GENERAL INFO") page = "YOUR REPOSITORIES";
         else if(state.section=="YOUR REPOSITORIES") page = "CODE";
+        else if(state.section=="CODE") page = "COMMITS";
         
         dispatch({ type: ActionTypes.NEXT_PAGE, section: page});
     }

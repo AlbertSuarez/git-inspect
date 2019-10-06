@@ -98,3 +98,20 @@ def search_for_tracks(access_token, query):
             else:
                 log.error(f'Error in {search_for_tracks.__name__} function. [{e}]')
     return None
+
+
+def add_tracks_to_playlist(access_token, playlist_id, track_uri_list):
+    for attempt in range(0, SPOTIFY_API_RETRIES):
+        try:
+            headers = {'Authorization': f'Bearer {access_token}'}
+            data = {'uris': track_uri_list}
+            endpoint = SPOTIFY_API_ADD_TRACKS.format(playlist_id=playlist_id)
+            track_response = requests.post(endpoint, json=data, headers=headers, timeout=SPOTIFY_API_TIMEOUT)
+            if track_response.ok:
+                return True
+        except Exception as e:
+            if attempt < SPOTIFY_API_RETRIES - 1:
+                log.warn(f'Attempt number {attempt}: Failed - [{e}]. Retrying...')
+            else:
+                log.error(f'Error in {add_tracks_to_playlist.__name__} function. [{e}]')
+    return None

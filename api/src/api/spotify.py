@@ -41,4 +41,9 @@ def playlist(code, github_user):
             track_uri_list.add(track_uri)
     track_uri_list = list(track_uri_list)
 
+    # Add tracks to the playlist
+    success = spotify_api.add_tracks_to_playlist(access_token, playlist_id, track_uri_list)
+    if not success:
+        return response.make(error=True, message=MESSAGE_SPOTIFY_TRACK_ERROR)
+
     return response.make(error=False, response=dict(url=playlist_url))

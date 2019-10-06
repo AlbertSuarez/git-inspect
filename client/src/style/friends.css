@@ -1,0 +1,44 @@
+  
+.friendsListContent{
+    margin-top: 78px;
+}
+
+.cardProfilePhoto{
+    margin: 0.5em;
+    margin-left: 1em;
+    width: 20%;
+}
+
+.cardProfilePhoto img{
+    border-radius: 100%;
+    width: 80%;
+}
+
+.cardTextContainer{
+    width: 70%;
+    margin-top: 10px;
+}
+
+.cardRightArrow{
+    width: 20%;
+}
+
+.friendsListCardContent{
+    display: flex;
+    padding: 3px;
+}
+
+.friendsCard{
+    cursor: pointer;
+    margin: 11px;
+}
+
+.friendFullName{
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
+.friendExperience{
+    font-size: 12px;
+    font-weight: 700;
+}

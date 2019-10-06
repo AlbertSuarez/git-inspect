@@ -15,8 +15,6 @@ class GeneralInfo extends React.Component<any, {}> {
 
     public render(): React.ReactElement<any>{
 
-        console.log("DATA HOLIS",this.props);
-
         return(
             <Card className="sectionCard">
                 <div className="headerSection">
@@ -58,7 +56,7 @@ class GeneralInfo extends React.Component<any, {}> {
                         color="primary"
                         onClick={this.nextPage}
                         className="nextSectionButton">
-                        Next Section
+                        Next
                     </Button>
                 </div>
             </Card>

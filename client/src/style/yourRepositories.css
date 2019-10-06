@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
+.headerSection{
+    height: 25%;
+    margin: 1%;
+    display: flex;
+    justify-content: center;
+}
+
+.headerNumber{
+    text-align: center;
+    font-size: 5rem;
+    color: #D0A310;
+}
+
+.headerNumberContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.bigNumeberRepoTextContainer{
+    margin-top: 40%;
+    display: flex;
+    color: black;
+    justify-content: center;
+    text-align: center;
+}
+
+.repoSubSection{
+    margin: 0;
+    text-align: center;
+}
+
+.bigNumeberRepo{
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.bigNumeberRepoText{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .bigNumeberRepo{
+        font-size: 2rem;
+    }
+}

@@ -1,46 +1,45 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import TextField from '@material-ui/core/TextField';
-import Card from '@material-ui/core/Card';
-import {
-  createMuiTheme,
-  makeStyles,
-  createStyles,
-  Theme as AugmentedTheme,
-} from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import { SubmitLogin } from '../../actions/submitLogin';
-import { IGitInspectState } from '../../state';
 import '../../style/home.css';
-import gitInspect from '../../assets/gitInspect.png';
+import * as React from 'react';
+import {
+    createMuiTheme,
+    makeStyles,
+    createStyles,
+    Theme as AugmentedTheme,
+} from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import { IGitInspectState } from '../../state';
 import lime from '@material-ui/core/colors/lime';
+import TextField from '@material-ui/core/TextField';
+import { ThemeProvider } from '@material-ui/styles';
+import gitInspect from '../../assets/gitInspect.png';
+import CardContent from '@material-ui/core/CardContent';
+import { SubmitLogin } from '../../actions/submitLogin';
 
 const theme = createMuiTheme({
-  palette: {
-    primary: lime,
-  },
+    palette: {
+        primary: lime,
+    },
 });
 
 class HomePage extends React.Component<any, any> {
-  
-  constructor(props:any){
+
+  constructor(props: any) {
     super(props);
 
-    this.state={
-      username: "",
-      error: false
+    this.state = {
+        username:   "",
+        error:      false
     }
   }
 
-  public render(): React.ReactElement<any>{
-
+  public render(): React.ReactElement<any> {
     return(
       <Card className="centered">
-        <img 
+        <img
           className="homeImage"
-          src={gitInspect} 
+          src={gitInspect}
           alt="Logo" />
           <ThemeProvider theme={theme}>
             <TextField
@@ -52,9 +51,9 @@ class HomePage extends React.Component<any, any> {
               margin="dense"
               variant="outlined"
             />
-          
-          <Button 
-            variant="contained" 
+
+          <Button
+            variant="contained"
             color="primary"
             onClick={this.submit}
             className="homeButton">
@@ -65,30 +64,26 @@ class HomePage extends React.Component<any, any> {
     );
   }
 
-  public changeUsername = (event: any) => {
-    this.setState({username: event.target.value, error: false});
-  };
+    public changeUsername = (event: any) => {
+        this.setState({ username: event.target.value, error: false });
+    };
 
-  private submit = () => {
-    if(this.state.username=="") this.setState({error: true});
-    else this.props.submitLogin(this.state.username);
-  }
+    private submit = () => {
+        if (this.state.username=="") this.setState({ error: true });
+        else this.props.submitLogin(this.state.username);
+    }
 }
 
-interface IDispatch{
-  submitLogin:(username: string) => void;
+interface IDispatch {
+  submitLogin: (username: string) => void;
 }
 
-const mapDispatchToProps = (dispatch:any):IDispatch => {
-  return{
-      submitLogin:(username: string) => {
-          return dispatch(SubmitLogin(username));
-      }
+const mapDispatchToProps = (dispatch:any): IDispatch => {
+  return {
+      submitLogin: (username: string) => dispatch(SubmitLogin(username))
   };
 };
 
-const mapStateToProps = (state: IGitInspectState) => ({
-  
-});
+const mapStateToProps = (state: IGitInspectState) => ({ });
 
-export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

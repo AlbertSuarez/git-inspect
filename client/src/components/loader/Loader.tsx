@@ -1,13 +1,13 @@
 import * as React from 'react';
+import '../../style/loader.css';
 import { connect } from 'react-redux';
 import { IGitInspectState } from '../../state';
-import '../../style/loader.css';
 
 class Loader extends React.Component<any, any> {
 
-    public render(){
-        return (    
-            <div className={this.props.isBusy ? "loader-show" : "loader-hide"}>
+    public render() {
+        return (
+            <div className={ this.props.isBusy ? "loader-show" : "loader-hide" }>
                 <div className="loader"></div>
             </div>
         );
@@ -15,18 +15,10 @@ class Loader extends React.Component<any, any> {
 
 }
 
-interface IDispatch{
+interface IDispatch { }
 
-}
+const mapDispatchToProps = (dispatch: any): IDispatch => ({ });
 
-const mapDispatchToProps = (dispatch:any):IDispatch => {
-    return{
-        
-    };
-};
-
-const mapStateToProps = (state: IGitInspectState) => ({
-    isBusy: state.isBusy
-});
+const mapStateToProps = ({ isBusy }: IGitInspectState) => ({ isBusy });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Loader);

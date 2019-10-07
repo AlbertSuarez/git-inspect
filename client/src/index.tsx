@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './style/index.css';
+import ReactDOM from 'react-dom';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import GitInspect from './components/gitInspect/GitInspect';
-import App from './components/App';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

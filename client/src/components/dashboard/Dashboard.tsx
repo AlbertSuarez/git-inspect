@@ -1,36 +1,34 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { IGitInspectState } from '../../state';
 import '../../style/dashboard.css';
+import { connect } from 'react-redux';
+import Code from '../sections/code/Code';
+import Music from '../sections/music/Music';
+import { IGitInspectState } from '../../state';
 import { NextPage } from '../../actions/nextPage';
+import Commits from '../sections/commits/Commits';
+import Friends from '../sections/friends/Friends';
 import GeneralInfo from '../sections/generalInfo/GeneralInfo';
 import YourRepositories from '../sections/YourRepositories/YourRepositories';
 import { Link, Element as Element, animateScroll as scroll } from "react-scroll";
-import Code from '../sections/code/Code';
-import Commits from '../sections/commits/Commits';
-import Friends from '../sections/friends/Friends';
-import Music from '../sections/music/Music';
 
 class Dashboard extends React.Component<any, any> {
 
-    constructor(props:any){
+    constructor(props:any) {
         super(props);
 
         this.state = {
-            generalInfoClass: "generalInfoShow",
-            yourRepositoriesClass: "yourRepositoriesHidden",
-            codeClass: "codeHidden",
-            commitsClass: "commitsHidden",
-            friendsClass: "friendsHidden",
-            musicClass: "musicHidden"
+            generalInfoClass:       "generalInfoShow",
+            yourRepositoriesClass:  "yourRepositoriesHidden",
+            codeClass:              "codeHidden",
+            commitsClass:           "commitsHidden",
+            friendsClass:           "friendsHidden",
+            musicClass:             "musicHidden"
         };
     }
-    
-    public render(): React.ReactElement<any>{
 
+    public render(): React.ReactElement<any> {
         console.log("DATA DASHBOARD", this.props);
-
-        return(
+        return (
             <div id="dashboardContainer" className="dashboardContent">
                 <div className={this.state.generalInfoClass}>
                     <GeneralInfo/>
@@ -55,81 +53,81 @@ class Dashboard extends React.Component<any, any> {
     }
 
     public componentWillReceiveProps(nextProps: any) {
-        if(nextProps.section=="GENERAL INFO") {
-            this.setState({
-                generalInfoClass: "generalInfoShow",
-                yourRepositoriesClass: "yourRepositoriesHidden",
-                codeClass: "codeHidden",
-                commitsClass: "commitsHidden",
-                friendsClass: "friendsHidden",
-                musicClass: "musicHidden"
-            });
-        }
-        else if (nextProps.section=="YOUR REPOSITORIES"){
-            this.setState({
-                generalInfoClass: "generalInfoHidden",
-                yourRepositoriesClass: "yourRepositoriesShow",
-                codeClass: "codeHidden",
-                commitsClass: "commitsHidden",
-                friendsClass: "friendsHidden",
-                musicClass: "musicHidden"
-            });
-        }
-        else if (nextProps.section=="CODE"){
-            this.setState({
-                generalInfoClass: "generalInfoHidden",
-                yourRepositoriesClass: "yourRepositoriesHidden",
-                codeClass: "codeShow",
-                commitsClass: "commitsHidden",
-                friendsClass: "friendsHidden",
-                musicClass: "musicHidden"
-            });
-        }
-        else if (nextProps.section=="COMMITS"){
-            this.setState({
-                generalInfoClass: "generalInfoHidden",
-                yourRepositoriesClass: "yourRepositoriesHidden",
-                codeClass: "codeHidden",
-                commitsClass: "commitsShow",
-                friendsClass: "friendsHidden",
-                musicClass: "musicHidden"
-            });
-        }
-        else if (nextProps.section=="FRIENDS"){
-            this.setState({
-                generalInfoClass: "generalInfoHidden",
-                yourRepositoriesClass: "yourRepositoriesHidden",
-                codeClass: "codeHidden",
-                commitsClass: "commitsHidden",
-                friendsClass: "friendsShow",
-                musicClass: "musicHidden"
-            });
-        }
-        else if (nextProps.section=="MUSIC"){
-            this.setState({
-                generalInfoClass: "generalInfoHidden",
-                yourRepositoriesClass: "yourRepositoriesHidden",
-                codeClass: "codeHidden",
-                commitsClass: "commitsHidden",
-                friendsClass: "friendsHidden",
-                musicClass: "musicShow"
-            });
+        switch (nextProps.section) {
+            case "GENERAL INFO": {
+                this.setState({
+                    generalInfoClass:       "generalInfoShow",
+                    yourRepositoriesClass:  "yourRepositoriesHidden",
+                    codeClass:              "codeHidden",
+                    commitsClass:           "commitsHidden",
+                    friendsClass:           "friendsHidden",
+                    musicClass:             "musicHidden"
+                });
+                break;
+            }
+            case "YOUR REPOSITORIES": {
+                this.setState({
+                    generalInfoClass:       "generalInfoHidden",
+                    yourRepositoriesClass:  "yourRepositoriesShow",
+                    codeClass:              "codeHidden",
+                    commitsClass:           "commitsHidden",
+                    friendsClass:           "friendsHidden",
+                    musicClass:             "musicHidden"
+                });
+                break;
+            }
+            case "CODE": {
+                this.setState({
+                    generalInfoClass:       "generalInfoHidden",
+                    yourRepositoriesClass:  "yourRepositoriesHidden",
+                    codeClass:              "codeShow",
+                    commitsClass:           "commitsHidden",
+                    friendsClass:           "friendsHidden",
+                    musicClass:             "musicHidden"
+                });
+                break;
+            }
+            case "COMMITS": {
+                this.setState({
+                    generalInfoClass:       "generalInfoHidden",
+                    yourRepositoriesClass:  "yourRepositoriesHidden",
+                    codeClass:              "codeHidden",
+                    commitsClass:           "commitsShow",
+                    friendsClass:           "friendsHidden",
+                    musicClass:             "musicHidden"
+                });
+                break;
+            }
+            case "FRIENDS": {
+                this.setState({
+                    generalInfoClass:       "generalInfoHidden",
+                    yourRepositoriesClass:  "yourRepositoriesHidden",
+                    codeClass:              "codeHidden",
+                    commitsClass:           "commitsHidden",
+                    friendsClass:           "friendsShow",
+                    musicClass:             "musicHidden"
+                });
+                break;
+            }
+            case "MUSIC": {
+                this.setState({
+                    generalInfoClass:       "generalInfoHidden",
+                    yourRepositoriesClass:  "yourRepositoriesHidden",
+                    codeClass:              "codeHidden",
+                    commitsClass:           "commitsHidden",
+                    friendsClass:           "friendsHidden",
+                    musicClass:             "musicShow"
+                });
+                break;
+            }
         }
     }
 }
 
-interface IDispatch{
-    
-}
+interface IDispatch { }
 
-const mapDispatchToProps = (dispatch:any):IDispatch => {
-    return{
+const mapDispatchToProps = (dispatch: any): IDispatch => ({ });
 
-    };
-};
+const mapStateToProps = ({ section }: IGitInspectState) => ({ section });
 
-const mapStateToProps = (state: IGitInspectState) => ({
-    section: state.section
-});
-
-export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

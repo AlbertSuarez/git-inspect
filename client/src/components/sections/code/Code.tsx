@@ -1,12 +1,12 @@
 import * as React from 'react';
+import '../../../style/code.css';
+import '../../../style/section.css';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
-import { IGitInspectState } from '../../../state';
-import '../../../style/section.css';
-import { NextPage,BackPage } from '../../../actions/nextPage';
 import { Button } from '@material-ui/core';
 import { Doughnut } from 'react-chartjs-2';
-import '../../../style/code.css';
+import { IGitInspectState } from '../../../state';
+import { NextPage,BackPage } from '../../../actions/nextPage';
 
 let dataCode = {};
 let dataTopics = {};
@@ -25,7 +25,7 @@ class Code extends React.Component<any, {}> {
         });
 
         dataCode = {
-            datasets:[{
+            datasets: [{
                 data: valuesCode,
                 backgroundColor: ["#88c440", "#ffc100","#009687","#ff5505","#6633b9","#9c1ab1","#eb1460","#00bbd5"]
             }],
@@ -41,7 +41,7 @@ class Code extends React.Component<any, {}> {
         });
 
         dataTopics = {
-            datasets:[{
+            datasets: [{
                 data: valuesTopics,
                 backgroundColor: ["#88c440", "#ffc100","#009687","#ff5505","#6633b9","#9c1ab1","#eb1460","#00bbd5"]
             }],
@@ -49,9 +49,8 @@ class Code extends React.Component<any, {}> {
         };
     }
 
-    public render(): React.ReactElement<any>{
-
-        return(
+    public render(): React.ReactElement<any> {
+        return (
             <Card className="sectionCard">
                 <div className="sectionContentCode">
                     <div className="subSectionContainer">
@@ -63,20 +62,20 @@ class Code extends React.Component<any, {}> {
                     <div className="subSectionContainer">
                         <h2 className="codeSubSection">Topics</h2>
                         <div className="pieContainer">
-                            { this.props.user_main_data.topics.length==0 ? <div>No topics</div> : <Doughnut data={dataTopics}/>}
+                            { this.props.user_main_data.topics.length==0 ? <div>No topics</div> : <Doughnut data={dataTopics}/> }
                         </div>
                     </div>
                 </div>
                 <div className="footerContent">
-                    <Button 
-                        variant="contained" 
+                    <Button
+                        variant="contained"
                         color="secondary"
                         onClick={this.backPage}
                         className="nextSectionButton">
                         Back
                     </Button>
-                    <Button 
-                        variant="contained" 
+                    <Button
+                        variant="contained"
                         color="primary"
                         onClick={this.nextPage}
                         className="nextSectionButton">
@@ -97,23 +96,15 @@ class Code extends React.Component<any, {}> {
 }
 
 interface IDispatch{
-    nextPage:() => void;
-    backPage:() => void;
+    nextPage: () => void;
+    backPage: () => void;
 }
 
-const mapDispatchToProps = (dispatch:any):IDispatch => {
-    return{
-        nextPage:() => {
-            return dispatch(NextPage());
-        },
-        backPage:() => {
-            return dispatch(BackPage());
-        }
-    };
-};
-
-const mapStateToProps = (state: IGitInspectState) => ({
-    user_main_data: state.user_main_data
+const mapDispatchToProps = (dispatch: any): IDispatch => ({
+    nextPage: () => dispatch(NextPage()),
+    backPage: () => dispatch(BackPage())
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Code);
+const mapStateToProps = ({ user_main_data }: IGitInspectState) => ({ user_main_data });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Code);

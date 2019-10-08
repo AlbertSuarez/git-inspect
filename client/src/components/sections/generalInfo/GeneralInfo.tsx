@@ -53,7 +53,7 @@ class GeneralInfo extends React.Component<any, {}> {
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={this.nextPage}
+                        onClick={ this.nextPage }
                         className="nextSectionButton">
                         Next
                     </Button>

@@ -27,7 +27,6 @@ class HomePage extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
-
     this.state = {
         username:   "",
         error:      false
@@ -35,19 +34,19 @@ class HomePage extends React.Component<any, any> {
   }
 
   public render(): React.ReactElement<any> {
-    return(
+    return (
       <Card className="centered">
         <img
           className="homeImage"
-          src={gitInspect}
+          src={ gitInspect }
           alt="Logo" />
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={ theme }>
             <TextField
-              error={this.state.error}
+              error={ this.state.error }
               id="outlined-dense"
               label="Github Username"
               className="homeInput"
-              onChange={this.changeUsername}
+              onChange={ this.changeUsername }
               margin="dense"
               variant="outlined"
             />
@@ -78,11 +77,9 @@ interface IDispatch {
   submitLogin: (username: string) => void;
 }
 
-const mapDispatchToProps = (dispatch:any): IDispatch => {
-  return {
-      submitLogin: (username: string) => dispatch(SubmitLogin(username))
-  };
-};
+const mapDispatchToProps = (dispatch:any): IDispatch => ({
+    submitLogin: (username: string) => dispatch(SubmitLogin(username))
+});
 
 const mapStateToProps = (state: IGitInspectState) => ({ });
 

@@ -13,9 +13,8 @@ import { Link, Element as Element, animateScroll as scroll } from "react-scroll"
 
 class Dashboard extends React.Component<any, any> {
 
-    constructor(props:any) {
+    constructor(props: any) {
         super(props);
-
         this.state = {
             generalInfoClass:       "generalInfoShow",
             yourRepositoriesClass:  "yourRepositoriesHidden",
@@ -30,22 +29,22 @@ class Dashboard extends React.Component<any, any> {
         console.log("DATA DASHBOARD", this.props);
         return (
             <div id="dashboardContainer" className="dashboardContent">
-                <div className={this.state.generalInfoClass}>
+                <div className={ this.state.generalInfoClass }>
                     <GeneralInfo/>
                 </div>
-                <div className={this.state.yourRepositoriesClass}>
+                <div className={ this.state.yourRepositoriesClass }>
                     <YourRepositories/>
                 </div>
-                <div className={this.state.codeClass}>
+                <div className={ this.state.codeClass }>
                     <Code/>
                 </div>
-                <div className={this.state.commitsClass}>
+                <div className={ this.state.commitsClass }>
                     <Commits/>
                 </div>
-                <div className={this.state.friendsClass}>
+                <div className={ this.state.friendsClass }>
                     <Friends/>
                 </div>
-                <div className={this.state.musicClass}>
+                <div className={ this.state.musicClass }>
                     <Music/>
                 </div>
             </div>

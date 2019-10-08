@@ -27,19 +27,19 @@ class Friends extends React.Component<any, {}> {
                                     <h1 className="profileName">Here are your contributors...</h1>
                                 </div>
                                 <div className="sectionContentFriends">
-                                    {this.props.user_main_data.contributors.map((contributor: any)=>{
-                                        return(
-                                            <div className="friendsListCardContent" onClick={()=>this.openProfile(contributor.url)}>
+                                    { this.props.user_main_data.contributors.map((contributor: any) => {
+                                        return (
+                                            <div className="friendsListCardContent" onClick={ () => this.openProfile(contributor.url) }>
                                                 <div className="cardProfilePhoto">
-                                                    <img src={contributor.photo}/>
+                                                    <img src={ contributor.photo }/>
                                                 </div>
                                                 <div className="cardTextContainer">
-                                                    <div className="friendFullName">{contributor.label}</div>
-                                                    <div className="friendExperience">{contributor.commits+" commits"}</div>
+                                                    <div className="friendFullName">{ contributor.label }</div>
+                                                    <div className="friendExperience">{ contributor.commits } commits</div>
                                                 </div>
                                             </div>
                                         );
-                                    })}
+                                    }) }
                                 </div>
                             </div>)
                 }
@@ -47,14 +47,14 @@ class Friends extends React.Component<any, {}> {
                     <Button
                         variant="contained"
                         color="secondary"
-                        onClick={this.backPage}
+                        onClick={ this.backPage }
                         className="nextSectionButton">
                         Back
                     </Button>
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={this.nextPage}
+                        onClick={ this.nextPage }
                         className="nextSectionButton">
                         Next
                     </Button>
@@ -71,7 +71,7 @@ class Friends extends React.Component<any, {}> {
         this.props.backPage();
     }
 
-    private openProfile = (url:string) => {
+    private openProfile = (url: string) => {
         window.open(url, '_blank');
     }
 }

@@ -46,10 +46,6 @@ class GeneralInfo extends React.Component<any, {}> {
                 </div>
                 <div className="footerContent">
                     <div className="space"></div>
-                    asdasdasd
-                </div>
-                <div className="footerContent">
-                    <div className="space"></div>
                     <Button
                         variant="contained"
                         color="primary"

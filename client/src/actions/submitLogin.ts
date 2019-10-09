@@ -1,6 +1,5 @@
 import { ActionTypes } from ".";
 import Service from "../service/Service";
-import { IGitInspectState } from "../state";
 import { IUserMainModel } from "../models/IUserMainModel";
 
 const SubmitLoginSuccess = (user_main_data: IUserMainModel) => ({

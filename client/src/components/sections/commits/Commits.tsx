@@ -9,10 +9,6 @@ import { NextPage, BackPage } from '../../../actions/nextPage';
 
 class Commits extends React.Component<any, {}> {
 
-    constructor(props: any) {
-        super(props);
-    }
-
     public render(): React.ReactElement<any> {
         return (
             <Card className="sectionCard">

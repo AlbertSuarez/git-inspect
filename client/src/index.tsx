@@ -3,7 +3,6 @@ import './style/index.css';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import GitInspect from './components/gitInspect/GitInspect';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

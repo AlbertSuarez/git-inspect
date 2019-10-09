@@ -21,4 +21,4 @@ const mapDispatchToProps = (dispatch: any): IDispatch => ({ });
 
 const mapStateToProps = ({ isBusy }: IGitInspectState) => ({ isBusy });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Loader);
+export default connect(mapStateToProps, mapDispatchToProps)(Loader);

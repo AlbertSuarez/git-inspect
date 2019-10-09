@@ -16,7 +16,7 @@ class GitInspect extends React.Component<any, any> {
         this.props.setInitialState();
         let username = "";
         const cookies = new Cookies();
-        if (cookies.get('spotyUp') == "true") {
+        if (cookies.get('spotyUp') === "true") {
             username = cookies.get('lastUserName');
             cookies.set('spotyUp', false, { path: '/' });
             this.props.getPlaylist(

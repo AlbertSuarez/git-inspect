@@ -9,16 +9,12 @@ import { NextPage, BackPage } from '../../../actions/nextPage';
 
 class Friends extends React.Component<any, {}> {
 
-    constructor(props: any) {
-        super(props);
-    }
-
     public render(): React.ReactElement<any> {
         console.log("CONT", this.props.user_main_data.contributors);
         return (
             <Card className="sectionCard">
                 {
-                    this.props.user_main_data.contributors.length == 0
+                    this.props.user_main_data.contributors.length === 0
                         ? (<div className="headerSection">
                                 <h1 className="profileName">You don't have any contributor... It's so sad</h1>
                             </div>)
@@ -27,19 +23,17 @@ class Friends extends React.Component<any, {}> {
                                     <h1 className="profileName">Here are your contributors...</h1>
                                 </div>
                                 <div className="sectionContentFriends">
-                                    { this.props.user_main_data.contributors.map((contributor: any) => {
-                                        return (
-                                            <div className="friendsListCardContent" onClick={ () => this.openProfile(contributor.url) }>
+                                    { this.props.user_main_data.contributors.map((contributor: any, index: number) =>
+                                            <div key={ index } className="friendsListCardContent" onClick={ () => this.openProfile(contributor.url) }>
                                                 <div className="cardProfilePhoto">
-                                                    <img src={ contributor.photo }/>
+                                                    <img alt="Contributor Profile" src={ contributor.photo }/>
                                                 </div>
                                                 <div className="cardTextContainer">
                                                     <div className="friendFullName">{ contributor.label }</div>
                                                     <div className="friendExperience">{ contributor.commits } commits</div>
                                                 </div>
                                             </div>
-                                        );
-                                    }) }
+                                    )}
                                 </div>
                             </div>)
                 }

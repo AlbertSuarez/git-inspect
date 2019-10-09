@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import Code from '../sections/code/Code';
 import Music from '../sections/music/Music';
 import { IGitInspectState } from '../../state';
-import { NextPage } from '../../actions/nextPage';
 import Commits from '../sections/commits/Commits';
 import Friends from '../sections/friends/Friends';
 import GeneralInfo from '../sections/generalInfo/GeneralInfo';
 import YourRepositories from '../sections/YourRepositories/YourRepositories';
-import { Link, Element as Element, animateScroll as scroll } from "react-scroll";
 
 class Dashboard extends React.Component<any, any> {
 
@@ -125,7 +123,7 @@ class Dashboard extends React.Component<any, any> {
 
 interface IDispatch { }
 
-const mapDispatchToProps = (dispatch: any): IDispatch => ({ });
+const mapDispatchToProps = (): IDispatch => ({ });
 
 const mapStateToProps = ({ section }: IGitInspectState) => ({ section });
 

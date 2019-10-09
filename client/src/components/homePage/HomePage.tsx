@@ -1,11 +1,5 @@
 import '../../style/home.css';
 import * as React from 'react';
-import {
-    createMuiTheme,
-    makeStyles,
-    createStyles,
-    Theme as AugmentedTheme,
-} from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -14,8 +8,8 @@ import lime from '@material-ui/core/colors/lime';
 import TextField from '@material-ui/core/TextField';
 import { ThemeProvider } from '@material-ui/styles';
 import gitInspect from '../../assets/gitInspect.png';
-import CardContent from '@material-ui/core/CardContent';
 import { SubmitLogin } from '../../actions/submitLogin';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
     palette: {
@@ -68,7 +62,7 @@ class HomePage extends React.Component<any, any> {
     };
 
     private submit = () => {
-        if (this.state.username=="") this.setState({ error: true });
+        if (this.state.username === "") this.setState({ error: true });
         else this.props.submitLogin(this.state.username);
     }
 }

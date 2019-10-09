@@ -9,15 +9,11 @@ import { NextPage } from '../../../actions/nextPage';
 
 class GeneralInfo extends React.Component<any, {}> {
 
-    constructor(props: any) {
-        super(props);
-    }
-
     public render(): React.ReactElement<any> {
         return (
             <Card className="sectionCard">
                 <div className="headerSection">
-                    <img src={ this.props.user_main_data.photo } className="profileImg"></img>
+                    <img src={ this.props.user_main_data.photo } alt="Profile" className="profileImg"></img>
                     {/* <h1 className="profileName">{this.props.user_main_data.username}</h1> */}
                 </div>
                 <div className="sectionContent">
@@ -47,6 +43,10 @@ class GeneralInfo extends React.Component<any, {}> {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="footerContent">
+                    <div className="space"></div>
+                    asdasdasd
                 </div>
                 <div className="footerContent">
                     <div className="space"></div>

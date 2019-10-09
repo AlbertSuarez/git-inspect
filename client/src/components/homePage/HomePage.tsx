@@ -48,7 +48,7 @@ class HomePage extends React.Component<any, any> {
           <Button
             variant="contained"
             color="primary"
-            onClick={this.submit}
+            onClick={ this.submit }
             className="homeButton">
             Submit
           </Button>

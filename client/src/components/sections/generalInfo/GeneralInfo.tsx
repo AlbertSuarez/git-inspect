@@ -53,7 +53,7 @@ class GeneralInfo extends React.Component<any, {}> {
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={ this.nextPage }
+                        onClick={ () => this.props.nextPage() }
                         className="nextSectionButton">
                         Next
                     </Button>
@@ -62,9 +62,6 @@ class GeneralInfo extends React.Component<any, {}> {
         );
     }
 
-    private nextPage = () => {
-        this.props.nextPage();
-    }
 }
 
 interface IDispatch {

@@ -55,14 +55,14 @@ class YourRepositories extends React.Component<any, {}> {
                     <Button
                         variant="contained"
                         color="secondary"
-                        onClick={ this.backPage }
+                        onClick={ () => this.props.backPage() }
                         className="nextSectionButton">
                         Back
                     </Button>
                     <Button
                         variant="contained"
                         color="primary"
-                        onClick={ this.nextPage }
+                        onClick={ () => this.props.nextPage() }
                         className="nextSectionButton">
                         Next
                     </Button>
@@ -71,13 +71,6 @@ class YourRepositories extends React.Component<any, {}> {
         );
     }
 
-    private nextPage = () => {
-        this.props.nextPage();
-    }
-
-    private backPage = () => {
-        this.props.backPage();
-    }
 }
 
 interface IDispatch{

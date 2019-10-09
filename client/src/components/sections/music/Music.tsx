@@ -27,7 +27,7 @@ class Music extends React.Component<any, {}> {
                     <Button
                         variant="contained"
                         color="secondary"
-                        onClick={ this.backPage }
+                        onClick={ () => this.props.backPage() }
                         className="nextSectionButton">
                         Back
                     </Button>
@@ -37,10 +37,6 @@ class Music extends React.Component<any, {}> {
         );
     };
 
-    private backPage = () => {
-        this.props.backPage();
-    }
-
     private openSpotify() {
         const cookies = new Cookies();
         cookies.set('lastUserName', this.props.user_main_data.username, { path: '/' });
@@ -49,7 +45,7 @@ class Music extends React.Component<any, {}> {
     }
 }
 
-interface IDispatch{
+interface IDispatch {
     backPage:       () => void;
     loginSpotify:   () => void;
 }

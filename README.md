@@ -11,7 +11,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/AlbertSuarez/git-inspect.svg)](https://GitHub.com/AlbertSuarez/git-inspect/graphs/contributors/)
 [![GitHub license](https://img.shields.io/github/license/AlbertSuarez/git-inspect.svg)](https://github.com/AlbertSuarez/git-inspect/blob/master/LICENSE)
 
-[Demo](http://134.209.244.212:8085/) | [API Documentation](http://134.209.244.212:8084/ui) | [Devpost](https://devpost.com/software/git-inspect)
+[Demo](https://gitinspect.ml) | [API Documentation](https://api.gitinspect.ml/ui) | [Devpost](https://devpost.com/software/git-inspect)
 
 🐙 Do you think that you already know all about your GitHub user? Wrong answer. Git Inspect is gonna tell you. GitHub user information extractor built in [MamutHack'19](https://www.mamuthack.com).
 

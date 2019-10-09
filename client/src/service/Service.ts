@@ -8,7 +8,7 @@ export default class Service implements IService {
         return new Promise<IUserMainModel>((resolve,reject)=>{
             let headers = new Headers();        
 
-            fetch("http://134.209.244.212:8084/user?github_user="+username,{
+            fetch("https://api.gitinspect.ml/user?github_user="+username,{
                 headers: headers,
                 method: 'GET',
             })
@@ -29,7 +29,7 @@ export default class Service implements IService {
         return new Promise<string>((resolve,reject)=>{
             let headers = new Headers();        
 
-            fetch("http://134.209.244.212:8084/spotify/login",{
+            fetch("https://api.gitinspect.ml/spotify/login",{
                 headers: headers,
                 method: 'GET',
             })
@@ -50,7 +50,7 @@ export default class Service implements IService {
         return new Promise<string>((resolve,reject)=>{
             let headers = new Headers();        
             
-            fetch("http://134.209.244.212:8084/spotify/playlist?code="+code+"&github_user="+username,{
+            fetch("https://api.gitinspect.ml/spotify/playlist?code="+code+"&github_user="+username,{
                 headers: headers,
                 method: 'GET',
             })

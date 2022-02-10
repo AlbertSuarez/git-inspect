@@ -15,7 +15,7 @@
     "@types/toastr": "^2.1.37",
     "chart.js": "^2.8.0",
     "jquery": "^3.4.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.10.2",
     "react-chartjs-2": "^2.8.0",
     "react-cookie": "^4.0.1",
